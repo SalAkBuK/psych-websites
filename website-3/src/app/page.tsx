@@ -95,7 +95,7 @@ export default function Home() {
           <span className={styles.announcementSeparator} aria-hidden="true">
             •
           </span>
-          <span>Accepting Aetna, Cigna, Optum &amp; more</span>
+          <span>Accepting Medicare, Medicaid, Aetna, Cigna, Optum &amp; more</span>
         </div>
         <div className={styles.heroContent}>
           <div className={styles.heroPanel}>
@@ -147,12 +147,6 @@ export default function Home() {
                   <p>Evening &amp; weekend appointments available</p>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className={styles.heroVisual}>
-            <div className={styles.imagePlaceholder}>Feature welcoming provider or patient imagery</div>
-            <div className={styles.placeholderCaption}>
-              Use a warm, confident portrait that reflects calm, professional care
             </div>
           </div>
         </div>
