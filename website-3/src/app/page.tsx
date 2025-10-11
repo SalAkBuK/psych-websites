@@ -105,7 +105,7 @@ export default function Home() {
                   <span />
                 </div>
                 <div className={styles.brandText}>
-                  <span className={styles.brandName}>Mindful Horizons</span>
+                  <span className={styles.brandName}>AOK Health Solutions</span>
                   <span className={styles.brandDescriptor}>Psychiatry</span>
                 </div>
               </div>
