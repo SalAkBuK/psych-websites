@@ -439,7 +439,7 @@
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   padding: clamp(2rem, 4vw, 3.5rem);
-  align-items: center;
+  align-items: start;
 }
 
 .providerImage {
