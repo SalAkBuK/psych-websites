@@ -1,6 +1,7 @@
+
 .main {
-  background: linear-gradient(180deg, #f5f8ff 0%, #ffffff 40%);
-  color: #1b1e34;
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 45%);
+  color: var(--color-text);
   display: flex;
   flex-direction: column;
   gap: 6rem;
@@ -13,7 +14,7 @@
   background: url('/yo.png') center top/cover no-repeat;
   background-position: center 20%;
   padding: 0;
-  color: #f3fbfb;
+  color: var(--color-contrast);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -23,7 +24,11 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(42, 124, 126, 0.7) 0%, rgba(42, 124, 126, 0.5) 100%);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-forest) 85%, transparent) 0%,
+    color-mix(in srgb, var(--color-teal) 75%, transparent) 100%
+  );
   z-index: 0;
   mix-blend-mode: multiply;
 }
@@ -35,8 +40,8 @@
 }
 
 .announcementBar {
-  background: #C9A961;
-  color: #ffffff;
+  background: var(--color-accent);
+  color: var(--color-contrast);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,7 +50,7 @@
   padding: 1.5rem 2rem;
   font-size: clamp(1rem, 1.2vw, 1.1rem);
   line-height: 1.6;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.02em;
 }
 
@@ -62,7 +67,7 @@
 
 .heroPanel {
   background: transparent;
-  color: #e8f8f8;
+  color: color-mix(in srgb, var(--color-contrast) 96%, var(--color-mint) 4%);
   display: flex;
   flex-direction: column;
   gap: clamp(3rem, 5vw, 5rem);
@@ -97,7 +102,7 @@
 }
 
 .brandMark span {
-  border: 2px solid #C9A961;
+  border: 2px solid var(--color-accent-soft);
   border-radius: 50%;
   display: block;
   height: 65%;
@@ -106,7 +111,7 @@
 }
 
 .brandMark span::before {
-  background: #C9A961;
+  background: var(--color-accent);
   border-radius: 999px;
   bottom: -30%;
   content: '';
@@ -118,7 +123,7 @@
 }
 
 .brandMark span::after {
-  border: 2px solid #C9A961;
+  border: 2px solid var(--color-accent);
   border-radius: 50% 55% 45% 50%;
   content: '';
   height: 50%;
@@ -133,21 +138,21 @@
   display: flex;
   flex-direction: column;
   line-height: 1.05;
-  color: #C9A961;
+  color: var(--color-accent-soft);
 }
 
 .brandName {
   font-size: clamp(1.3rem, 2.5vw, 1.75rem);
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: #C9A961;
+  color: var(--color-contrast);
 }
 
 .brandDescriptor {
   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #C9A961;
+  color: var(--color-accent-soft);
 }
 
 .menuButton {
@@ -166,7 +171,7 @@
 }
 
 .menuButton span {
-  background: #ffffff;
+  background: var(--color-contrast);
   border-radius: 2px;
   display: block;
   height: 3px;
@@ -185,21 +190,25 @@
 
 .heroEyebrow {
   align-items: center;
-  color: #ffffff;
+  color: var(--color-accent-soft);
   display: inline-flex;
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   font-weight: 400;
-  gap: 0;
-  letter-spacing: 0.02em;
-  text-transform: none;
+  gap: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .heroEyebrowAccent {
-  display: none;
+  background: var(--color-accent);
+  border-radius: 999px;
+  display: inline-block;
+  height: 4px;
+  width: 40px;
 }
 
 .heroCopy h1 {
-  color: #ffffff;
+  color: color-mix(in srgb, var(--color-contrast) 95%, var(--color-mint) 5%);
   font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -207,7 +216,7 @@
 }
 
 .heroCopy p {
-  color: rgba(232, 248, 248, 0.88);
+  color: color-mix(in srgb, var(--color-contrast) 85%, var(--color-mint) 15%);
   font-size: clamp(1rem, 1.1vw, 1.15rem);
   line-height: 1.7;
 }
@@ -220,38 +229,40 @@
 }
 
 .primaryButton {
-  background: linear-gradient(135deg, #1f9f97 0%, #f3c96f 100%);
+  background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-accent) 100%);
   border-radius: 999px;
-  color: #0b2c2f;
+  color: var(--color-contrast);
   font-weight: 600;
   padding: 0.9rem 2.25rem;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 18px 38px rgba(14, 92, 90, 0.35);
+  box-shadow: 0 18px 38px color-mix(in srgb, var(--color-teal) 35%, transparent);
 }
 
 .primaryButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 26px 50px rgba(14, 92, 90, 0.45);
+  box-shadow: 0 26px 50px color-mix(in srgb, var(--color-teal) 45%, transparent);
 }
 
 .secondaryButton {
-  border: 2px solid rgba(245, 223, 178, 0.55);
+  border: 2px solid color-mix(in srgb, var(--color-highlight) 45%, var(--color-contrast) 55%);
   border-radius: 999px;
-  color: rgba(245, 233, 199, 0.95);
+  color: color-mix(in srgb, var(--color-contrast) 90%, var(--color-mint) 10%);
   font-weight: 600;
   padding: 0.85rem 1.9rem;
-  transition: border 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: border 0.2s ease, color 0.2s ease, transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .secondaryButton:hover {
-  border-color: rgba(243, 201, 111, 0.75);
-  color: #fff2d6;
+  border-color: var(--color-highlight);
+  color: var(--color-contrast);
+  background: color-mix(in srgb, var(--color-highlight) 20%, transparent);
   transform: translateY(-2px);
 }
 
 .heroDetails {
-  border-top: 1px solid rgba(225, 245, 242, 0.2);
+  border-top: 1px solid color-mix(in srgb, var(--color-contrast) 20%, transparent);
   display: flex;
   flex-wrap: wrap;
   gap: 2.25rem;
@@ -260,11 +271,11 @@
 }
 
 .heroDetails p {
-  color: rgba(218, 240, 240, 0.78);
+  color: color-mix(in srgb, var(--color-contrast) 78%, var(--color-mint) 22%);
 }
 
 .detailHeading {
-  color: rgba(245, 223, 178, 0.9);
+  color: color-mix(in srgb, var(--color-accent-soft) 65%, var(--color-contrast) 35%);
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -287,15 +298,15 @@
   align-items: center;
   background: repeating-linear-gradient(
       45deg,
-      rgba(34, 131, 126, 0.08),
-      rgba(34, 131, 126, 0.08) 12px,
-      rgba(243, 202, 126, 0.08) 12px,
-      rgba(243, 202, 126, 0.08) 24px
+      color-mix(in srgb, var(--color-mint) 40%, var(--color-contrast) 60%),
+      color-mix(in srgb, var(--color-mint) 40%, var(--color-contrast) 60%) 12px,
+      color-mix(in srgb, var(--color-teal) 38%, var(--color-contrast) 62%) 12px,
+      color-mix(in srgb, var(--color-teal) 38%, var(--color-contrast) 62%) 24px
     ),
-    rgba(239, 250, 248, 0.9);
-  border: 1px dashed rgba(28, 110, 105, 0.35);
+    color-mix(in srgb, var(--color-surface) 65%, var(--color-contrast) 35%);
+  border: 1px dashed color-mix(in srgb, var(--color-teal) 45%, transparent);
   border-radius: 1.5rem;
-  color: #1e5754;
+  color: var(--color-highlight);
   display: flex;
   font-size: 0.95rem;
   font-weight: 600;
@@ -306,22 +317,26 @@
 }
 
 .heroVisual .imagePlaceholder {
-  background: linear-gradient(135deg, rgba(10, 60, 65, 0.78), rgba(19, 96, 104, 0.65));
-  border: 1px solid rgba(198, 237, 236, 0.38);
-  box-shadow: 0 30px 60px rgba(4, 25, 28, 0.55);
-  color: rgba(244, 251, 251, 0.95);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-forest) 82%, transparent),
+    color-mix(in srgb, var(--color-teal) 68%, transparent)
+  );
+  border: 1px solid color-mix(in srgb, var(--color-contrast) 35%, transparent);
+  box-shadow: 0 30px 60px color-mix(in srgb, var(--color-forest) 55%, transparent);
+  color: color-mix(in srgb, var(--color-contrast) 94%, var(--color-mint) 6%);
   min-height: clamp(18rem, 32vw, 24rem);
   width: min(440px, 100%);
 }
 
 .placeholderCaption {
-  color: #4f5c63;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
   text-align: center;
 }
 
 .heroVisual .placeholderCaption {
-  color: rgba(233, 246, 244, 0.8);
+  color: color-mix(in srgb, var(--color-contrast) 80%, var(--color-mint) 20%);
 }
 
 .section {
@@ -342,19 +357,19 @@
 }
 
 .sectionHeader h2 {
-  color: #20244a;
+  color: var(--color-text);
   font-size: clamp(2rem, 3vw, 2.5rem);
 }
 
 .sectionHeader p {
-  color: #4b5070;
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
 .sectionTag {
-  background: rgba(61, 178, 181, 0.15);
+  background: color-mix(in srgb, var(--color-accent) 30%, var(--color-contrast) 70%);
   border-radius: 999px;
-  color: #1f6f73;
+  color: var(--color-accent-strong);
   font-weight: 600;
   letter-spacing: 0.08em;
   padding: 0.4rem 1rem;
@@ -368,9 +383,9 @@
 }
 
 .treatmentCard {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 1.5rem;
-  box-shadow: 0 30px 60px rgba(41, 69, 133, 0.08);
+  box-shadow: 0 30px 60px color-mix(in srgb, var(--color-teal) 20%, transparent);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -379,9 +394,9 @@
 
 .cardIcon {
   align-items: center;
-  background: rgba(108, 123, 255, 0.12);
+  background: color-mix(in srgb, var(--color-accent) 22%, var(--color-contrast) 78%);
   border-radius: 1rem;
-  color: #3c4aa8;
+  color: var(--color-accent-strong);
   display: inline-flex;
   font-size: 1.4rem;
   height: 48px;
@@ -390,12 +405,12 @@
 }
 
 .treatmentCard h3 {
-  color: #222651;
+  color: var(--color-text);
   font-size: 1.25rem;
 }
 
 .treatmentCard p {
-  color: #4b5070;
+  color: var(--color-text-muted);
   flex: 1;
   line-height: 1.55;
 }
@@ -406,14 +421,18 @@
 }
 
 .providerSection {
-  background: linear-gradient(135deg, rgba(108, 123, 255, 0.08), rgba(61, 178, 181, 0.08));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-mint) 55%, var(--color-contrast) 45%),
+    color-mix(in srgb, var(--color-sage) 45%, var(--color-contrast) 55%)
+  );
   padding: 4rem clamp(1.5rem, 4vw, 6rem);
 }
 
 .providerCard {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 2rem;
-  box-shadow: 0 40px 80px rgba(28, 58, 131, 0.1);
+  box-shadow: 0 40px 80px color-mix(in srgb, var(--color-teal) 25%, transparent);
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -432,7 +451,7 @@
 }
 
 .credentialList {
-  color: #3c4a63;
+  color: var(--color-text-muted);
   display: grid;
   gap: 0.5rem;
   list-style: none;
@@ -446,7 +465,7 @@
 }
 
 .providerLinks a {
-  color: #3c4aa8;
+  color: var(--color-accent);
   font-weight: 600;
   text-decoration: underline;
 }
@@ -458,10 +477,10 @@
 }
 
 .insuranceItem {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 1rem;
-  box-shadow: inset 0 0 0 1px rgba(60, 74, 168, 0.18);
-  color: #2d315a;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-accent) 45%, transparent);
+  color: var(--color-text);
   font-weight: 600;
   padding: 1rem 1.25rem;
   text-align: center;
@@ -473,24 +492,28 @@
 }
 
 .faqItem {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 1.25rem;
-  box-shadow: 0 25px 50px rgba(25, 43, 94, 0.08);
+  box-shadow: 0 25px 50px color-mix(in srgb, var(--color-teal) 18%, transparent);
   padding: 1.75rem;
 }
 
 .faqItem h3 {
-  color: #222651;
+  color: var(--color-text);
   margin-bottom: 0.75rem;
 }
 
 .faqItem p {
-  color: #4b5070;
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
 .aboutSection {
-  background: linear-gradient(180deg, rgba(108, 123, 255, 0.09) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-mint) 32%, transparent) 0%,
+    transparent 100%
+  );
   padding: 4rem clamp(1.5rem, 4vw, 6rem);
 }
 
@@ -502,7 +525,7 @@
 }
 
 .highlightList {
-  color: #3c4a63;
+  color: var(--color-text-muted);
   display: grid;
   gap: 0.75rem;
   list-style: none;
@@ -511,7 +534,7 @@
 
 .highlightList li::before {
   content: '•';
-  color: #3db2b5;
+  color: var(--color-highlight);
   margin-right: 0.5rem;
 }
 
@@ -530,9 +553,9 @@
 
 .contactCard,
 .contactForm {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 1.5rem;
-  box-shadow: 0 30px 60px rgba(28, 58, 131, 0.08);
+  box-shadow: 0 30px 60px color-mix(in srgb, var(--color-teal) 18%, transparent);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -541,7 +564,7 @@
 
 .contactCard h3,
 .contactForm h3 {
-  color: #222651;
+  color: var(--color-text);
 }
 
 .hoursList {
@@ -552,29 +575,30 @@
 }
 
 .hoursList li {
-  color: #3c4a63;
+  color: var(--color-text-muted);
   display: flex;
   justify-content: space-between;
 }
 
 .contactCta {
-  background: rgba(108, 123, 255, 0.1);
+  background: color-mix(in srgb, var(--color-accent) 18%, transparent);
   border-radius: 1rem;
   padding: 1.5rem;
   text-align: center;
 }
 
 .contactForm label {
-  color: #3c4a63;
+  color: var(--color-text);
   font-weight: 600;
 }
 
 .contactForm input,
 .contactForm textarea {
-  border: 1px solid rgba(60, 74, 168, 0.2);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
   border-radius: 0.9rem;
   padding: 0.75rem 1rem;
   font: inherit;
+  background: var(--color-contrast);
 }
 
 .contactForm textarea {
@@ -583,21 +607,21 @@
 
 .contactForm input:focus,
 .contactForm textarea:focus {
-  border-color: #6c7bff;
+  border-color: var(--color-accent);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(108, 123, 255, 0.15);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 22%, transparent);
 }
 
 .formDisclaimer {
-  color: #5d668c;
+  color: var(--color-text-muted);
   font-size: 0.85rem;
   line-height: 1.4;
 }
 
 .footer {
   align-items: center;
-  background: #1b1e34;
-  color: #e1e4ff;
+  background: var(--color-forest);
+  color: color-mix(in srgb, var(--color-contrast) 92%, transparent);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -611,7 +635,7 @@
 }
 
 .footerLinks a {
-  color: rgba(225, 228, 255, 0.8);
+  color: color-mix(in srgb, var(--color-contrast) 80%, transparent);
   text-decoration: underline;
 }
 
