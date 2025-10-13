@@ -295,7 +295,6 @@
 }
 
 .imagePlaceholder,
-.providerImage,
 .cardImagePlaceholder,
 .contactImage {
   align-items: center;
@@ -444,7 +443,11 @@
 }
 
 .providerImage {
-  min-height: 320px;
+  position: relative;
+  min-height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-surface);
 }
 
 .providerContent {

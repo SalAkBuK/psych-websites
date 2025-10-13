@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import styles from './page.module.css'
 
 const treatments = [
@@ -175,7 +176,13 @@ export default function Home() {
 
       <section className={styles.providerSection} id="provider">
         <div className={styles.providerCard}>
-          <div className={styles.providerImage}>Provider Portrait Placeholder</div>
+          <div className={styles.providerImage}>
+            <img
+              src="/aok.png"
+              alt="Akosua Karikari, DNP, PMHNP-BC, FNP-BC"
+              style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block', borderRadius: '12px' }}
+            />
+          </div>
           <div className={styles.providerContent}>
             <span className={styles.sectionTag}>Provider</span>
             <h2>Akosua Karikari, DNP, PMHNP-BC, FNP-BC</h2>
