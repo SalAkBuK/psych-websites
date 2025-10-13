@@ -559,6 +559,7 @@
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
 }
 
 .contactCard,
@@ -570,6 +571,7 @@
   flex-direction: column;
   gap: 1.25rem;
   padding: clamp(1.5rem, 3vw, 2.25rem);
+  height: 100%;
 }
 
 .contactCard h3,
@@ -593,7 +595,8 @@
 .contactCta {
   background: color-mix(in srgb, var(--color-accent) 18%, transparent);
   border-radius: 1rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
   margin-top: auto;
   padding: 1.5rem;
@@ -607,7 +610,7 @@
 }
 
 .contactCta .primaryButton {
-  justify-self: center;
+  align-self: center;
 }
 
 .contactForm label {
@@ -617,7 +620,7 @@
 
 .formGroup {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 .contactForm input,
@@ -642,6 +645,7 @@
 
 .contactForm button {
   align-self: flex-start;
+  margin-top: 0.5rem;
 }
 
 .formDisclaimer {
