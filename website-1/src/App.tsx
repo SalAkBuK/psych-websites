@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import './App.css'
 
-type Service = {
+type Treatment = {
   title: string
   description: string
 }
@@ -13,8 +12,8 @@ type ProcessStep = {
 
 type TeamMember = {
   name: string
-  role: string
-  tagline: string
+  credentials: string
+  focus: string
 }
 
 type Testimonial = {
@@ -27,76 +26,102 @@ type Faq = {
   answer: string
 }
 
-const services: Service[] = [
+const navLinks = [
+  { label: 'Home', href: '#home' },
+  { label: 'Treatments', href: '#treatments' },
+  { label: 'Providers', href: '#providers' },
+  { label: 'Insurance', href: '#insurance' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'About Us', href: '#about' },
+  { label: 'Contact', href: '#contact' },
+]
+
+const treatments: Treatment[] = [
   {
-    title: 'Anxiety Therapy',
-    description: 'Tools and support to manage worry, panic, and overwhelm.',
+    title: 'Anxiety Disorder',
+    description:
+      'Evidence-based medication management and coping strategies to reduce worry, panic, and overwhelm.',
   },
   {
-    title: 'Depression Care',
-    description: 'Compassionate treatment focused on restoring balance.',
+    title: 'ADHD',
+    description:
+      'Comprehensive evaluations with tailored treatment plans to enhance focus, organization, and follow-through.',
   },
   {
-    title: 'ADHD Coaching',
-    description: 'Evidence-based strategies tailored to your daily life.',
+    title: 'Bipolar Disorder',
+    description:
+      'Collaborative care plans that balance mood stability, safety, and whole-person wellness.',
   },
   {
-    title: 'Couples Counseling',
-    description: 'Guidance to strengthen communication and connection.',
+    title: 'Depression',
+    description:
+      'Compassionate support that combines therapy-informed guidance with thoughtful medication adjustments.',
+  },
+  {
+    title: 'Medication Management',
+    description:
+      'Ongoing partnership to monitor progress, adjust dosages, and minimize side effects for every treatment.',
+  },
+  {
+    title: 'Mood Disorder',
+    description:
+      'Holistic care to regulate mood changes and strengthen resilience through personalized interventions.',
+  },
+  {
+    title: 'OCD',
+    description:
+      'Structured treatment that integrates exposure-based tools and medication to relieve intrusive thoughts.',
+  },
+  {
+    title: 'PTSD',
+    description:
+      'Trauma-informed, gentle approaches that honor your story and support healing at your pace.',
   },
 ]
 
 const processSteps: ProcessStep[] = [
   {
-    title: 'Contact',
-    description: 'Schedule a call or send us a message to get started.',
+    title: 'Connect With Us',
+    description:
+      'Reach out by phone, email, or our secure message form. We will respond within one business day.',
   },
   {
-    title: 'Assessment',
-    description: 'We listen, learn, and craft a personalized care plan.',
+    title: 'Assessment & Collaboration',
+    description:
+      'We complete a thorough assessment, review your goals, and recommend a tailored plan of care.',
   },
   {
     title: 'Personalized Care',
-    description: 'Receive ongoing support tailored to your goals.',
+    description:
+      'Continue with regular visits, medication management, and supportive coaching designed for lasting wellness.',
   },
 ]
 
-const teamMembers: TeamMember[] = [
+const team: TeamMember[] = [
   {
-    name: 'Dr. Maya Chen',
-    role: 'Clinical Psychologist',
-    tagline: 'Specialist in anxiety and mindfulness-based therapy.',
-  },
-  {
-    name: 'Alex Patel, LCSW',
-    role: 'Therapist',
-    tagline: 'Empowering clients with practical coping strategies.',
-  },
-  {
-    name: 'Jordan Smith, PsyD',
-    role: 'Neuropsychologist',
-    tagline: 'Focused on ADHD evaluation and executive coaching.',
-  },
-  {
-    name: 'Taylor Rivera, LMFT',
-    role: 'Couples Therapist',
-    tagline: 'Helping partners communicate with clarity and care.',
+    name: 'Akosua Karikari, DNP, PMHNP-BC',
+    credentials:
+      'Psychiatric Mental Health Nurse Practitioner · Family Nurse Practitioner · Adult Gerontology Nurse Practitioner',
+    focus:
+      'Blending clinical expertise with attentive listening to support adults, adolescents, and families across New Jersey and New York.',
   },
 ]
 
 const testimonials: Testimonial[] = [
   {
     quote:
-      'They made me feel heard and understood from the very first session.',
-    author: 'A. Smith',
+      'Akosua listened without judgment and guided me toward a plan that finally makes sense. I feel genuinely supported.',
+    author: 'Client in Paterson, NJ',
   },
   {
-    quote: 'The team guided me through every step with warmth and expertise.',
-    author: 'R. Johnson',
+    quote:
+      'From the first appointment I knew I was in good hands. My questions were answered and my concerns were heard.',
+    author: 'Telehealth Client',
   },
   {
-    quote: 'I finally feel like I have a plan that works for my life.',
-    author: 'L. Garcia',
+    quote:
+      'The care team is warm, responsive, and invested in my progress every step of the way.',
+    author: 'NY Client',
   },
 ]
 
@@ -104,18 +129,40 @@ const faqs: Faq[] = [
   {
     question: 'Do you accept insurance?',
     answer:
-      'Yes, we partner with most major insurance providers and will help you navigate coverage options.',
+      'Yes. We partner with Medicare, Medicaid, Cigna, Optum, Oscar, United Healthcare, Horizon BCBS, BCBS New Jersey, Fidelis Care, WellCare, AmeriHealth, Tricare, Aetna, and Multiplan.',
   },
   {
     question: 'Are sessions available virtually?',
     answer:
-      'We offer secure telehealth appointments alongside in-person sessions at our clinic.',
+      'Absolutely. We provide HIPAA-compliant virtual visits in addition to in-person appointments, making care more flexible for you.',
   },
   {
-    question: 'What ages do you work with?',
+    question: 'Who do you serve?',
     answer:
-      'Our clinicians support adolescents, adults, and families with tailored treatment plans.',
+      'AOK Health Solutions supports adolescents, adults, and families throughout New Jersey and New York with culturally competent care.',
   },
+  {
+    question: 'How soon can I get an appointment?',
+    answer:
+      'Most new patients are seen within one to two weeks. Book online through our Tebra link or call us for current availability.',
+  },
+]
+
+const insurancePlans = [
+  'Medicare',
+  'Medicaid',
+  'Cigna',
+  'Optum',
+  'Oscar',
+  'United Healthcare',
+  'Horizon BCBS',
+  'BCBS New Jersey',
+  'Fidelis Care',
+  'WellCare',
+  'AmeriHealth',
+  'Tricare',
+  'Aetna',
+  'Multiplan',
 ]
 
 const App: React.FC = () => {
@@ -126,93 +173,195 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="app">
-      <header className="site-header">
-        <div className="container header-content">
-          <div className="brand">
-            <div className="brand-logo" aria-hidden="true">
-              MW
+    <div className="min-h-screen bg-slate-50 text-slate-900">
+      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur">
+        <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
+          <div className="flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-sky-100 via-emerald-100 to-slate-100 text-base font-semibold text-sky-900 shadow-sm">
+              AOK
             </div>
             <div>
-              <p className="brand-name">Mindful Wellness</p>
-              <p className="brand-tagline">Integrative Mental Health</p>
+              <p className="text-lg font-semibold">AOK Health Solutions</p>
+              <p className="text-sm text-slate-500">Compassionate psychiatric & mental wellness care</p>
             </div>
           </div>
-          <nav className="primary-nav" aria-label="Primary navigation">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#team">Team</a>
-            <a href="#contact">Contact</a>
+          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 lg:flex" aria-label="Primary">
+            {navLinks.map((link) => (
+              <a key={link.href} className="transition hover:text-slate-900" href={link.href}>
+                {link.label}
+              </a>
+            ))}
           </nav>
-          <a className="cta-button cta-button--primary desktop-only" href="#contact">
+          <a
+            className="hidden rounded-full bg-emerald-500 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-600 lg:inline-flex"
+            href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765"
+            target="_blank"
+            rel="noreferrer"
+          >
             Book Consultation
           </a>
-          <a className="cta-button cta-button--outline mobile-only" href="#contact">
-            Book Consultation
-          </a>
+        </div>
+        <div className="border-t border-slate-200 bg-white/90 py-2 lg:hidden">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-4 px-4 text-sm text-slate-600">
+            {navLinks.map((link) => (
+              <a key={link.href} className="transition hover:text-slate-900" href={link.href}>
+                {link.label}
+              </a>
+            ))}
+            <a
+              className="inline-flex rounded-full bg-emerald-500 px-4 py-1.5 font-semibold text-white shadow-sm transition hover:bg-emerald-600"
+              href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Book Consultation
+            </a>
+          </div>
         </div>
       </header>
 
       <main>
-        <section className="hero" id="home">
-          <div className="container hero-content">
-            <div className="hero-copy">
-              <span className="hero-badge">Evidence-based and heart-led</span>
-              <h1 className="hero-title">Your Mental Wellness Matters</h1>
-              <p className="hero-text">
-                We provide compassionate, science-backed care for anxiety, depression, ADHD, and relationship challenges.
-                Together, we craft a plan that fits your life and supports lasting change.
+        <section
+          id="home"
+          className="bg-gradient-to-br from-sky-50 via-white to-emerald-50"
+          aria-labelledby="hero-heading"
+        >
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[1.05fr_1fr]">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1 text-sm font-medium text-slate-600 shadow-sm">
+                <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
+                Evidence-based and heart-led
+              </span>
+              <h1 id="hero-heading" className="mt-6 text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+                Your Mental Wellness Matters.
+              </h1>
+              <p className="mt-4 max-w-2xl text-lg text-slate-600">
+                Partner with a board-certified psychiatric nurse practitioner offering individualized, culturally attuned care
+                for clients across New Jersey and New York. We are here to help you feel heard, supported, and empowered.
               </p>
-              <div className="hero-actions">
-                <a className="cta-button cta-button--primary" href="#contact">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <a
+                  className="inline-flex rounded-full bg-emerald-500 px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-emerald-600"
+                  href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Book an Appointment
                 </a>
-                <a className="cta-button cta-button--outline" href="#services">
-                  Explore Services
+                <a
+                  className="inline-flex rounded-full border border-emerald-500 px-6 py-3 text-base font-semibold text-emerald-600 transition hover:border-emerald-600 hover:text-emerald-700"
+                  href="#treatments"
+                >
+                  Explore Treatments
                 </a>
               </div>
+              <dl className="mt-10 grid gap-6 text-sm text-slate-600 sm:grid-cols-2">
+                <div className="rounded-2xl bg-white/70 p-4 shadow-sm">
+                  <dt className="font-semibold text-slate-900">Service Areas</dt>
+                  <dd>New Jersey · New York · Secure telehealth</dd>
+                </div>
+                <div className="rounded-2xl bg-white/70 p-4 shadow-sm">
+                  <dt className="font-semibold text-slate-900">Office Hours</dt>
+                  <dd>Mon–Thu 4:00–8:00 PM · Sun 12:00–4:00 PM</dd>
+                </div>
+              </dl>
             </div>
-            <div className="hero-visual" role="presentation" aria-hidden="true">
-              <div className="hero-visual-card">
-                <div className="hero-visual-circle" />
-                <div className="hero-visual-content">
-                  <p>Personalized plans</p>
-                  <p>Licensed clinicians</p>
-                  <p>Virtual and in-person sessions</p>
+            <div className="relative">
+              <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-emerald-100 via-white to-sky-100 blur-3xl" aria-hidden="true" />
+              <div className="relative overflow-hidden rounded-[2rem] bg-white shadow-xl ring-1 ring-emerald-100">
+                <div className="bg-gradient-to-br from-sky-200/60 to-emerald-200/60 p-6">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-slate-700">
+                    Compassion, Clarity, Connection
+                  </p>
+                  <p className="mt-6 text-xl font-semibold text-slate-900">
+                    "Care designed around your lived experience, goals, and culture."
+                  </p>
+                  <p className="mt-4 text-sm text-slate-600">
+                    Discover how evidence-based treatment, thoughtful medication management, and supportive follow-up come
+                    together to help you thrive.
+                  </p>
+                  <div className="mt-6 grid gap-3 text-sm">
+                    <span className="inline-flex items-center gap-2 text-slate-700">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
+                      Board-certified psychiatric care
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-slate-700">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
+                      Virtual and in-person appointments
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-slate-700">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
+                      Support for adolescents, adults, and families
+                    </span>
+                  </div>
+                </div>
+                <div className="border-t border-emerald-100 bg-white p-6 text-sm text-slate-600">
+                  <p>
+                    View Akosua Karikari&apos;s full profile on{' '}
+                    <a
+                      className="font-semibold text-emerald-600 transition hover:text-emerald-700"
+                      href="https://www.psychologytoday.com/us/psychiatrists/akosua-karikari-paterson-nj/1442710"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Psychology Today
+                    </a>
+                    .
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="section" id="about">
-          <div className="container section-intro">
-            <h2 className="section-title">Care rooted in trust and collaboration</h2>
-            <p className="section-text">
-              Our clinicians blend evidence-based practices with warm, person-centered support. From the first conversation,
-              we focus on creating a space where you can feel heard, respected, and empowered.
-            </p>
+        <section id="about" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <div className="rounded-3xl bg-white p-8 shadow-xl ring-1 ring-emerald-100/70 sm:p-12">
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">About Us</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                Holistic, trust-centered care for every chapter of your life
+              </h2>
+              <p className="mt-6 text-lg text-slate-600">
+                Led by Akosua Karikari, DNP, PMHNP-BC, AOK Health Solutions unites medical expertise with whole-person support.
+                Every visit is tailored to your lived experience, cultural background, and personal goals. We believe healing is
+                collaborative—and that you deserve compassionate partners for the journey.
+              </p>
+              <p className="mt-4 text-lg text-slate-600">
+                From first consultation to ongoing follow-up, we prioritize clear communication, shared decision-making, and
+                accessible care for individuals and families across New Jersey and New York.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section className="section" id="services">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">Services tailored to your needs</h2>
-              <p className="section-text">
-                Explore the areas where we provide specialized care. Each service begins with a collaborative assessment to
-                match you with the right clinician and approach.
+        <section id="treatments" className="bg-white py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Treatments</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                Support for the concerns you face every day
+              </h2>
+              <p className="mt-4 text-lg text-slate-600">
+                We address a wide range of mental health conditions through integrative, evidence-based approaches. Each plan is
+                developed through careful assessment and ongoing collaboration.
               </p>
             </div>
-            <div className="card-grid">
-              {services.map((service) => (
-                <article key={service.title} className="info-card">
-                  <div className="info-card-icon" aria-hidden="true" />
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <a className="learn-more" href="#contact">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {treatments.map((treatment) => (
+                <article
+                  key={treatment.title}
+                  className="flex h-full flex-col justify-between rounded-3xl border border-slate-200/60 bg-gradient-to-br from-white to-slate-50 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div>
+                    <h3 className="text-xl font-semibold text-slate-900">{treatment.title}</h3>
+                    <p className="mt-3 text-sm text-slate-600">{treatment.description}</p>
+                  </div>
+                  <a
+                    className="mt-6 inline-flex items-center text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
+                    href="#contact"
+                  >
                     Learn More
+                    <span aria-hidden="true" className="ml-2">→</span>
                   </a>
                 </article>
               ))}
@@ -220,172 +369,321 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <section className="section muted" aria-labelledby="process-heading">
-          <div className="container">
-            <div className="section-header">
-              <h2 id="process-heading" className="section-title">
-                How it works
-              </h2>
-              <p className="section-text">
-                Three simple steps to begin your care journey with Mindful Wellness.
+        <section className="bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-800 py-16 text-white sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-200">How It Works</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Care in three intentional steps</h2>
+              <p className="mt-4 text-lg text-emerald-100/80">
+                From the first conversation, we make it simple to get started and stay supported with a plan that fits your pace.
               </p>
             </div>
-            <div className="process-grid">
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
               {processSteps.map((step, index) => (
-                <article key={step.title} className="process-card">
-                  <div className="process-index">{index + 1}</div>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
+                <article key={step.title} className="rounded-3xl bg-white/5 p-6 shadow-lg shadow-emerald-900/10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-400/20 text-lg font-semibold text-emerald-100">
+                    {index + 1}
+                  </div>
+                  <h3 className="mt-6 text-xl font-semibold text-white">{step.title}</h3>
+                  <p className="mt-3 text-sm text-emerald-100/90">{step.description}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section" id="team" aria-labelledby="team-heading">
-          <div className="container">
-            <div className="section-header">
-              <h2 id="team-heading" className="section-title">
-                Meet the team
+        <section id="providers" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Providers</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                Meet the clinician leading your care
               </h2>
-              <p className="section-text">
-                A multidisciplinary group of clinicians committed to attentive, personalized care.
+              <p className="mt-4 text-lg text-slate-600">
+                Our founder brings extensive experience across psychiatric, family, emergency, and gerontology nursing to every
+                appointment.
               </p>
             </div>
-            <div className="team-grid">
-              {teamMembers.map((member) => (
-                <article key={member.name} className="team-card">
-                  <div className="team-avatar" aria-hidden="true">
-                    {member.name
-                      .split(' ')
-                      .map((part) => part[0])
-                      .join('')}
+            <div className="mt-12 grid gap-8 md:grid-cols-2">
+              {team.map((member) => (
+                <article
+                  key={member.name}
+                  className="flex flex-col gap-6 rounded-3xl bg-white p-8 shadow-xl ring-1 ring-emerald-100/70"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-200 to-sky-200 text-2xl font-semibold text-emerald-900">
+                      {member.name
+                        .split(' ')
+                        .map((part) => part[0])
+                        .slice(0, 2)
+                        .join('')}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold text-slate-900">{member.name}</h3>
+                      <p className="mt-1 text-sm font-medium text-emerald-700">{member.credentials}</p>
+                    </div>
                   </div>
-                  <div className="team-details">
-                    <h3>{member.name}</h3>
-                    <p className="team-role">{member.role}</p>
-                    <p className="team-tagline">{member.tagline}</p>
+                  <p className="text-base text-slate-600">{member.focus}</p>
+                  <div className="rounded-2xl bg-emerald-50/70 p-5 text-sm text-emerald-900">
+                    <p className="font-semibold">Credentials & Training</p>
+                    <ul className="mt-2 space-y-1 text-emerald-800">
+                      <li>• Psychiatric Mental Health Nurse Practitioner</li>
+                      <li>• Family Nurse Practitioner</li>
+                      <li>• Adult Gerontology Nurse Practitioner</li>
+                      <li>• Family Emergency Nurse Practitioner</li>
+                    </ul>
                   </div>
                 </article>
               ))}
+              <div className="rounded-3xl border border-dashed border-emerald-200 bg-emerald-50/50 p-8 text-sm text-emerald-900">
+                <p className="font-semibold text-emerald-800">Looking for more details?</p>
+                <p className="mt-2">
+                  Visit our{' '}
+                  <a
+                    className="font-semibold text-emerald-600 transition hover:text-emerald-700"
+                    href="https://www.psychologytoday.com/us/psychiatrists/akosua-karikari-paterson-nj/1442710"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Psychology Today profile
+                  </a>{' '}
+                  or{' '}
+                  <a
+                    className="font-semibold text-emerald-600 transition hover:text-emerald-700"
+                    href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    book a visit via Tebra
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="section muted" aria-labelledby="testimonials-heading">
-          <div className="container">
-            <div className="section-header">
-              <h2 id="testimonials-heading" className="section-title">
-                Stories of care and progress
+        <section className="bg-slate-900 py-16 sm:py-24" aria-labelledby="testimonial-heading">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-200">Testimonials</p>
+              <h2 id="testimonial-heading" className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Voices from our community
               </h2>
-              <p className="section-text">
-                Hear from clients who have partnered with us to create meaningful change in their lives.
+              <p className="mt-4 text-lg text-emerald-100/80">
+                Clients share how collaborative, compassionate care has supported their wellbeing.
               </p>
             </div>
-            <div className="testimonial-grid">
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
               {testimonials.map((testimonial) => (
-                <blockquote key={testimonial.author} className="testimonial-card">
-                  <span aria-hidden="true" className="quote-mark">
-                    “
-                  </span>
-                  <p>{testimonial.quote}</p>
-                  <cite>— {testimonial.author}</cite>
+                <blockquote
+                  key={testimonial.author}
+                  className="flex h-full flex-col justify-between rounded-3xl bg-white/5 p-6 text-emerald-50 shadow-lg shadow-emerald-900/10"
+                >
+                  <p className="text-sm leading-relaxed">“{testimonial.quote}”</p>
+                  <cite className="mt-6 text-xs font-semibold uppercase tracking-wide text-emerald-200">
+                    — {testimonial.author}
+                  </cite>
                 </blockquote>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section" aria-labelledby="faq-heading">
-          <div className="container faq">
-            <div className="faq-intro">
-              <h2 id="faq-heading" className="section-title">
-                Frequently asked questions
+        <section id="insurance" className="bg-white py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Insurance</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                Insurance plans we proudly accept
               </h2>
-              <p className="section-text">
-                Have more questions about insurance, scheduling, or what to expect? We’re here to help.
+              <p className="mt-4 text-lg text-slate-600">
+                We work with a wide range of insurance partners and will guide you through benefits, authorizations, and billing
+                questions.
               </p>
             </div>
-            <div className="faq-items">
-              {faqs.map((faq, index) => {
-                const isOpen = openFaqIndex === index
-                return (
-                  <div key={faq.question} className={`faq-item${isOpen ? ' open' : ''}`}>
-                    <button
-                      type="button"
-                      className="faq-question"
-                      aria-expanded={isOpen}
-                      onClick={() => toggleFaq(index)}
-                    >
-                      <span>{faq.question}</span>
-                      <span aria-hidden="true" className="faq-indicator">
-                        {isOpen ? '−' : '+'}
-                      </span>
-                    </button>
-                    {isOpen ? <p className="faq-answer">{faq.answer}</p> : null}
-                  </div>
-                )
-              })}
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {insurancePlans.map((plan) => (
+                <div
+                  key={plan}
+                  className="flex items-center justify-between rounded-2xl border border-slate-200/60 bg-slate-50/80 px-5 py-4 text-sm font-semibold text-slate-700"
+                >
+                  <span>{plan}</span>
+                  <span aria-hidden="true">✓</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="section muted" id="contact" aria-labelledby="contact-heading">
-          <div className="container contact">
-            <div className="contact-details">
-              <h2 id="contact-heading" className="section-title">
-                Ready to begin?
+        <section id="faq" className="bg-gradient-to-br from-emerald-50 via-white to-sky-50 py-16 sm:py-24">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">FAQ</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                Questions we hear often
               </h2>
-              <p className="section-text">
-                Share a few details and our care coordinator will reach out within one business day.
+              <p className="mt-4 text-lg text-slate-600">
+                If you need more information about services, insurance, or scheduling, reach out. We are happy to help.
               </p>
-              <ul className="contact-list">
-                <li>
-                  <strong>Phone:</strong> (555) 123-4567
-                </li>
-                <li>
-                  <strong>Email:</strong> hello@mindfulwellness.com
-                </li>
-                <li>
-                  <strong>Location:</strong> 1200 Evergreen Ave, Suite 210, Portland, OR
-                </li>
-                <li>
-                  <strong>Hours:</strong> Mon–Fri 8am–6pm PT
-                </li>
-              </ul>
+              <div className="mt-8 space-y-4">
+                {faqs.map((faq, index) => {
+                  const isOpen = openFaqIndex === index
+                  return (
+                    <div key={faq.question} className="overflow-hidden rounded-2xl border border-emerald-100 bg-white shadow-sm">
+                      <button
+                        type="button"
+                        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-slate-900"
+                        aria-expanded={isOpen}
+                        onClick={() => toggleFaq(index)}
+                      >
+                        <span>{faq.question}</span>
+                        <span aria-hidden="true" className="text-base text-emerald-500">
+                          {isOpen ? '−' : '+'}
+                        </span>
+                      </button>
+                      {isOpen ? <p className="px-5 pb-5 text-sm text-slate-600">{faq.answer}</p> : null}
+                    </div>
+                  )
+                })}
+              </div>
             </div>
-            <form className="contact-form">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Your full name" required />
+            <div className="rounded-3xl bg-white p-8 shadow-xl ring-1 ring-emerald-100/80">
+              <h3 className="text-2xl font-semibold text-slate-900">Ready to schedule?</h3>
+              <p className="mt-3 text-sm text-slate-600">
+                Share a brief note about what you are looking for and our team will coordinate the next steps with you.
+              </p>
+              <form className="mt-6 space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-slate-500" htmlFor="faq-name">
+                    Name
+                  </label>
+                  <input
+                    id="faq-name"
+                    type="text"
+                    className="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2 text-sm shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                    placeholder="Your full name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-slate-500" htmlFor="faq-email">
+                    Email
+                  </label>
+                  <input
+                    id="faq-email"
+                    type="email"
+                    className="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2 text-sm shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-slate-500" htmlFor="faq-message">
+                    How can we help?
+                  </label>
+                  <textarea
+                    id="faq-message"
+                    rows={4}
+                    className="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2 text-sm shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                    placeholder="Share your questions or goals"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="inline-flex w-full justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-600"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="bg-white py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Contact</p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                  Reach out to begin your care
+                </h2>
+                <p className="mt-4 text-lg text-slate-600">
+                  Whether you are ready to book or just exploring options, we are here to answer your questions with warmth and
+                  clarity.
+                </p>
+                <dl className="mt-8 grid gap-6 text-sm text-slate-600 sm:grid-cols-2">
+                  <div className="rounded-2xl bg-slate-50/80 p-5 shadow-sm">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Phone</dt>
+                    <dd className="mt-2 text-base font-semibold text-slate-900">
+                      <a href="tel:19733623063">(973) 362-3063</a>
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-slate-50/80 p-5 shadow-sm">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Email</dt>
+                    <dd className="mt-2 text-base font-semibold text-slate-900">
+                      <a href="mailto:aokhealthsolutions@gmail.com">aokhealthsolutions@gmail.com</a>
+                    </dd>
+                  </div>
+                  <div className="rounded-2xl bg-slate-50/80 p-5 shadow-sm">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Locations</dt>
+                    <dd className="mt-2">Serving New Jersey &amp; New York · Virtual care available</dd>
+                  </div>
+                  <div className="rounded-2xl bg-slate-50/80 p-5 shadow-sm">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Office Hours</dt>
+                    <dd className="mt-2">Mon–Thu 4:00 PM – 8:00 PM · Sun 12:00 PM – 4:00 PM</dd>
+                  </div>
+                </dl>
               </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              <div className="rounded-3xl bg-gradient-to-br from-slate-900 via-sky-900 to-emerald-900 p-8 text-white shadow-xl">
+                <h3 className="text-2xl font-semibold">Book a consultation</h3>
+                <p className="mt-3 text-sm text-emerald-100/90">
+                  Schedule securely through Tebra or send us a note. We will confirm your appointment and share intake details.
+                </p>
+                <div className="mt-6 space-y-4 text-sm">
+                  <a
+                    className="flex items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-emerald-700 shadow-lg transition hover:bg-emerald-50"
+                    href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Book via Tebra
+                  </a>
+                  <a
+                    className="flex items-center justify-center rounded-full border border-white/60 px-6 py-3 font-semibold text-white transition hover:border-white hover:text-emerald-100"
+                    href="https://www.psychologytoday.com/us/psychiatrists/akosua-karikari-paterson-nj/1442710"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View Psychology Today Profile
+                  </a>
+                </div>
+                <div className="mt-8 rounded-2xl bg-white/10 p-5 text-xs text-emerald-100/90">
+                  <p className="font-semibold uppercase tracking-wide">Helpful reminders</p>
+                  <ul className="mt-3 space-y-2">
+                    <li>• Bring a current medication list to your first visit.</li>
+                    <li>• Telehealth visits require a private, quiet space and reliable internet.</li>
+                    <li>• Emergency needs? Please dial 911 or visit your nearest emergency room.</li>
+                  </ul>
+                </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="message">How can we help?</label>
-                <textarea id="message" name="message" rows={4} placeholder="Tell us about your goals"></textarea>
-              </div>
-              <button className="cta-button cta-button--primary" type="submit">
-                Submit
-              </button>
-            </form>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div className="container footer-content">
-          <p>© {new Date().getFullYear()} Mindful Wellness. All rights reserved.</p>
-          <div className="footer-links">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
-            <div className="social-icons" aria-label="Social media">
-              <span aria-hidden="true">●</span>
-              <span aria-hidden="true">●</span>
-              <span aria-hidden="true">●</span>
-            </div>
+      <footer className="border-t border-slate-200 bg-slate-900 py-10 text-sm text-emerald-100/80">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 sm:px-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-base font-semibold text-white">AOK Health Solutions</p>
+            <p className="mt-1 text-xs uppercase tracking-wide text-emerald-200">Your partner in mental wellness</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-wide">
+            <a className="transition hover:text-white" href="#privacy">
+              Privacy Policy
+            </a>
+            <a className="transition hover:text-white" href="#terms">
+              Terms of Service
+            </a>
+            <span>© {new Date().getFullYear()} AOK Health Solutions</span>
           </div>
         </div>
       </footer>
