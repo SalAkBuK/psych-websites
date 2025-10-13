@@ -237,6 +237,9 @@
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 18px 38px color-mix(in srgb, var(--color-teal) 35%, transparent);
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
 }
 
 .primaryButton:hover {
@@ -705,6 +708,12 @@
   .contactCard,
   .contactForm {
     padding: 1.5rem;
+  }
+
+  .primaryButton {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
   }
 
   .contactForm input,
