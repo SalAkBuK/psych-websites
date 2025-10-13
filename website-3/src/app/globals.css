@@ -24,7 +24,7 @@ body {
   --color-accent-strong: var(--color-forest);
   --color-highlight: var(--color-teal);
   --color-text: var(--color-forest);
-  --color-text-muted: color-mix(in srgb, var(--color-sage) 60%, white 40%);
+  --color-text-muted: color-mix(in srgb, var(--color-forest) 70%, var(--color-sage) 30%);
   --color-contrast: #ffffff;
 }
 

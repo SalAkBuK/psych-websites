@@ -2,6 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from './page.module.css'
 
+const navigationLinks = [
+  { label: 'Treatments', href: '#treatments' },
+  { label: 'Provider', href: '#provider' },
+  { label: 'Insurance', href: '#insurance' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Contact', href: '#contact' },
+]
+
 const treatments = [
   {
     title: 'Anxiety Disorder',
@@ -42,6 +50,24 @@ const treatments = [
     title: 'PTSD',
     description:
       'Trauma-informed support that nurtures resilience and helps you feel grounded and secure.',
+  },
+]
+
+const differentiators = [
+  {
+    title: 'Personalized treatment roadmaps',
+    description:
+      'Each visit is collaborative and designed to honor your story, cultural identity, and immediate goals.',
+  },
+  {
+    title: 'Holistic, whole-person focus',
+    description:
+      'Medication management is paired with lifestyle strategies, therapy coordination, and ongoing encouragement.',
+  },
+  {
+    title: 'Flexible access to care',
+    description:
+      'Virtual and in-person options with evening and weekend availability ensure care fits your routine.',
   },
 ]
 
@@ -87,6 +113,21 @@ const officeHours = [
   { day: 'Sunday', time: '12:00 PM – 4:00 PM' },
 ]
 
+const testimonials = [
+  {
+    quote:
+      'Akosua made me feel heard from the very first session. We developed a treatment plan that finally feels sustainable.',
+    name: 'M.M.',
+    role: 'Patient, Jersey City',
+  },
+  {
+    quote:
+      'She worked closely with my therapist to ensure my medications and coping skills lined up. I feel balanced again.',
+    name: 'R.M.',
+    role: 'Patient, Brooklyn',
+  },
+]
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -110,11 +151,18 @@ export default function Home() {
                   <span className={styles.brandDescriptor}>Psychiatry</span>
                 </div>
               </div>
-              <button className={styles.menuButton} type="button" aria-label="Open navigation menu">
-                <span />
-                <span />
-                <span />
-              </button>
+              <nav className={styles.heroNav} aria-label="Primary">
+                <ul>
+                  {navigationLinks.map((link) => (
+                    <li key={link.href}>
+                      <a href={link.href}>{link.label}</a>
+                    </li>
+                  ))}
+                </ul>
+                <a className={styles.heroNavCta} href="tel:19733623063">
+                  Call (973) 362-3063
+                </a>
+              </nav>
             </div>
             <div className={styles.heroCopy} id="home">
               <span className={styles.heroEyebrow}>
@@ -153,6 +201,25 @@ export default function Home() {
         </div>
       </header>
 
+      <section className={styles.section} id="approach">
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionTag}>Our Approach</span>
+          <h2>Care that centers your lived experience</h2>
+          <p>
+            We take time to understand every aspect of your health, partnering with you to create a care plan that feels
+            practical, affirming, and effective.
+          </p>
+        </div>
+        <div className={styles.valueGrid}>
+          {differentiators.map((item) => (
+            <article key={item.title} className={styles.valueCard}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.section} id="treatments">
         <div className={styles.sectionHeader}>
           <span className={styles.sectionTag}>Treatments</span>
@@ -170,6 +237,25 @@ export default function Home() {
               <p>{treatment.description}</p>
               <div className={styles.cardImagePlaceholder}>Image Placeholder</div>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.testimonialsSection} aria-label="Patient testimonials">
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionTag}>Patient Voices</span>
+          <h2>Stories of renewed balance</h2>
+          <p>Real experiences from people who partnered with AOK Health Solutions for their mental wellness journey.</p>
+        </div>
+        <div className={styles.testimonialGrid}>
+          {testimonials.map((testimonial) => (
+            <figure key={testimonial.name} className={styles.testimonialCard}>
+              <blockquote>“{testimonial.quote}”</blockquote>
+              <figcaption>
+                <span>{testimonial.name}</span>
+                <span>{testimonial.role}</span>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>
@@ -210,6 +296,24 @@ export default function Home() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.ctaBanner} aria-label="Schedule a consultation">
+        <div>
+          <h2>Ready to start feeling like yourself again?</h2>
+          <p>
+            Let’s talk through your questions, explore treatment options, and craft the first steps toward feeling grounded and
+            empowered.
+          </p>
+        </div>
+        <div className={styles.ctaActions}>
+          <Link className={styles.primaryButton} href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765">
+            Schedule a Visit
+          </Link>
+          <a className={styles.secondaryButton} href="mailto:aokhealthsolutions@gmail.com">
+            Email the Practice
+          </a>
         </div>
       </section>
 

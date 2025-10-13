@@ -80,7 +80,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  gap: 1.25rem;
+  gap: clamp(1rem, 3vw, 2.5rem);
   background: transparent;
   padding: 0;
 }
@@ -155,27 +155,54 @@
   color: var(--color-accent-soft);
 }
 
-.menuButton {
-  background: transparent;
-  border: none;
-  cursor: pointer;
+.heroNav {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-forest) 18%, transparent);
+  border-radius: 999px;
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: 0.5rem;
-  transition: opacity 0.2s ease;
+  gap: 1.5rem;
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  backdrop-filter: blur(10px);
 }
 
-.menuButton:hover {
-  opacity: 0.8;
+.heroNav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.menuButton span {
-  background: var(--color-contrast);
-  border-radius: 2px;
-  display: block;
-  height: 3px;
-  width: 2rem;
+.heroNav a {
+  color: color-mix(in srgb, var(--color-contrast) 92%, var(--color-mint) 8%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.heroNav a:hover,
+.heroNav a:focus {
+  color: var(--color-accent-soft);
+}
+
+.heroNavCta {
+  background: color-mix(in srgb, var(--color-highlight) 65%, transparent);
+  border-radius: 999px;
+  color: var(--color-contrast);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 1.4rem;
+  text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.heroNavCta:hover,
+.heroNavCta:focus {
+  background: var(--color-highlight);
+  transform: translateY(-2px);
 }
 
 .heroCopy {
@@ -348,6 +375,32 @@
   padding: 0 clamp(1.5rem, 4vw, 6rem);
 }
 
+.valueGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.valueCard {
+  background: var(--color-surface);
+  border-radius: 1.5rem;
+  box-shadow: 0 26px 52px color-mix(in srgb, var(--color-teal) 18%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem;
+}
+
+.valueCard h3 {
+  color: var(--color-text);
+  font-size: 1.2rem;
+}
+
+.valueCard p {
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
 .sectionHeader {
   align-items: center;
   display: flex;
@@ -431,6 +484,50 @@
   padding: 4rem clamp(1.5rem, 4vw, 6rem);
 }
 
+.testimonialsSection {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--color-surface-alt) 85%, transparent) 0%,
+    transparent 100%
+  );
+  padding: 4rem clamp(1.5rem, 4vw, 6rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.testimonialGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.testimonialCard {
+  background: var(--color-surface);
+  border-radius: 1.5rem;
+  box-shadow: 0 34px 70px color-mix(in srgb, var(--color-teal) 24%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.testimonialCard blockquote {
+  color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.testimonialCard figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .providerCard {
   background: var(--color-surface);
   border-radius: 2rem;
@@ -439,7 +536,7 @@
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   padding: clamp(2rem, 4vw, 3.5rem);
-  align-items: center;
+  align-items: start;
 }
 
 .providerImage {
@@ -474,6 +571,42 @@
   color: var(--color-accent);
   font-weight: 600;
   text-decoration: underline;
+}
+
+.ctaBanner {
+  align-items: center;
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--color-highlight) 18%, transparent) 0%,
+    color-mix(in srgb, var(--color-forest) 22%, transparent) 100%
+  );
+  border-radius: 2rem;
+  box-shadow: 0 40px 80px color-mix(in srgb, var(--color-teal) 28%, transparent);
+  color: var(--color-contrast);
+  display: flex;
+  flex-direction: row;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0 clamp(1.5rem, 4vw, 6rem);
+  padding: clamp(2rem, 5vw, 3rem);
+  justify-content: space-between;
+}
+
+.ctaBanner h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 600;
+}
+
+.ctaBanner p {
+  color: color-mix(in srgb, var(--color-contrast) 85%, var(--color-mint) 15%);
+  line-height: 1.6;
+  margin-top: 0.75rem;
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
 }
 
 .insuranceGrid {
@@ -718,13 +851,28 @@
   }
 
   .panelHeader {
-    align-items: flex-start;
+    align-items: stretch;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
-  .menuButton {
-    align-self: flex-end;
+  .heroNav {
+    align-self: stretch;
+    flex-direction: column;
+    padding: 1rem 1.25rem;
+  }
+
+  .heroNav ul {
+    flex-wrap: wrap;
+    gap: 0.85rem 1rem;
+  }
+
+  .heroNav a {
+    font-size: 0.85rem;
+  }
+
+  .heroNavCta {
+    align-self: flex-start;
   }
 
   .heroCopy {
@@ -754,5 +902,15 @@
   .contactForm input,
   .contactForm textarea {
     font-size: 0.95rem;
+  }
+
+  .ctaBanner {
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0 1.5rem;
+  }
+
+  .ctaActions {
+    justify-content: flex-start;
   }
 }
