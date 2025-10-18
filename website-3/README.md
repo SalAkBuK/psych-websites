@@ -1,111 +1,70 @@
-# Website 2 - Next.js + TypeScript + CSS Modules
+# Website 3 – Next.js Marketing Site
 
-A Next.js 14 application using the App Router with TypeScript and CSS Modules.
+Website 3 is a marketing landing page built with the Next.js App Router, TypeScript, and CSS Modules.
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router)
+- **Framework:** Next.js 15 (App Router)
 - **Language:** TypeScript
 - **Styling:** CSS Modules + SCSS support
+- **Animations:** GSAP + `@gsap/react`
 - **Package Manager:** npm
 
 ## Project Structure
 
 ```
-website-2/
+website-3/
 ├── src/
-│   ├── app/              # Next.js 14 App Router
-│   │   ├── layout.tsx    # Root layout
-│   │   ├── page.tsx      # Home page
-│   │   ├── page.module.css
-│   │   └── globals.css   # Global styles
-│   ├── components/       # Reusable components
-│   ├── lib/              # Utilities and helpers
-│   ├── types/            # TypeScript type definitions
-│   └── styles/           # Global styles and modules
-├── public/               # Static assets
-├── package.json          # Dependencies and scripts
-├── tsconfig.json         # TypeScript configuration
-└── next.config.js        # Next.js configuration
+│   ├── app/
+│   │   ├── layout.tsx        # Root layout
+│   │   ├── page.tsx          # Home page
+│   │   ├── page.module.css   # Page-scoped styles
+│   │   └── globals.css       # Global tokens and resets
+│   ├── components/           # Reusable UI pieces
+│   └── lib/                  # Utilities and helpers
+├── public/                   # Static assets
+├── package.json              # Scripts and dependencies
+├── next.config.js            # Next.js configuration
+└── tsconfig.json             # TypeScript configuration
 ```
 
-## Getting Started
+## Local Development
 
-### Install Dependencies
 ```bash
+cd website-3
 npm install
-```
-
-### Development Server
-```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Build for Production
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Production Build
+
 ```bash
 npm run build
-```
-
-### Start Production Server
-```bash
 npm run start
 ```
 
-### Lint
+### Static Export (used for GitHub Pages)
+
+```bash
+npm run deploy
+```
+
+This command runs `next build` with `output: "export"` enabled and writes the static site to `website-3/out`.
+
+## Deploying to GitHub Pages
+
+1. **Create a GitHub repository** and push this project to it. Ensure `website-3` lives at the repository root (as in this monorepo).
+2. **Enable GitHub Pages**: go to *Settings → Pages* and choose "GitHub Actions" as the source.
+3. **Set the base path**: add a repository variable named `WEBSITE_3_BASE_PATH` with the value of your repository name (for example `psych-websites`). For a user/organization page you can leave it blank.
+4. **Commit the provided workflow** at `.github/workflows/deploy-website-3.yml`. It builds the site, runs `npm run deploy`, and uploads the static export.
+5. **Push to `main`**: each push to the `main` branch triggers the workflow and publishes the contents of `website-3/out` to GitHub Pages.
+
+> **Tip:** If you deploy to a project page (e.g., `https://username.github.io/repo-name`), the base path ensures links and assets resolve correctly. For custom domains leave `WEBSITE_3_BASE_PATH` empty and configure the Pages settings instead.
+
+## Linting
+
 ```bash
 npm run lint
 ```
-
-## CSS Modules
-
-CSS Modules are configured by default. Create a `.module.css` file next to your component:
-
-```tsx
-// components/Button.tsx
-import styles from './Button.module.css'
-
-export default function Button({ label }: { label: string }) {
-  return <button className={styles.button}>{label}</button>
-}
-```
-
-```css
-/* components/Button.module.css */
-.button {
-  padding: 0.5rem 1rem;
-  background-color: blue;
-  color: white;
-  border-radius: 4px;
-}
-```
-
-## TypeScript
-
-TypeScript is configured with strict mode. Define types for your components:
-
-```tsx
-interface PageProps {
-  params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export default function Page({ params, searchParams }: PageProps) {
-  return <div>Page {params.id}</div>
-}
-```
-
-## App Router Features
-
-- **Server Components:** Components are Server Components by default
-- **Client Components:** Use `'use client'` directive for interactive components
-- **API Routes:** Create API endpoints in `app/api/` directory
-- **Layouts:** Shared UI using nested layouts
-- **Loading & Error States:** Built-in UI for loading and error handling
-
-## Learn More
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Next.js App Router](https://nextjs.org/docs/app)
-- [TypeScript Documentation](https://www.typescriptlang.org/)
-- [CSS Modules Documentation](https://github.com/css-modules/css-modules)
