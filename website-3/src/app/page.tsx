@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import BlurText from '@/components/BlurText/BlurText'
 import styles from './page.module.css'
 
 const navigationLinks = [
@@ -167,13 +168,31 @@ export default function Home() {
             <div className={styles.heroCopy} id="home">
               <span className={styles.heroEyebrow}>
                 <span className={styles.heroEyebrowAccent} aria-hidden="true" />
-                Guiding You to Mental Clarity
+                <BlurText
+                  text="Guiding You to Mental Clarity"
+                  delay={30}
+                  animateBy="words"
+                  direction="top"
+                  as="span"
+                />
               </span>
-              <h1>Personalized psychiatric care grounded in compassion</h1>
+              <h1>
+                <BlurText
+                  text="Personalized psychiatric care grounded in compassion"
+                  delay={50}
+                  animateBy="words"
+                  direction="top"
+                  as="span"
+                />
+              </h1>
               <p>
-                Akosua Karikari, PMHNP-BC, FNP-BC, partners with adults, adolescents, and families
-                to deliver culturally responsive treatment plans, thoughtful medication management,
-                and unwavering support.
+                <BlurText
+                  text="Akosua Karikari, PMHNP-BC, FNP-BC, partners with adults, adolescents, and families to deliver culturally responsive treatment plans, thoughtful medication management, and unwavering support."
+                  delay={30}
+                  animateBy="words"
+                  direction="top"
+                  as="span"
+                />
               </p>
               <div className={styles.heroActions}>
                 <Link
