@@ -11,20 +11,20 @@ body {
 }
 
 :root {
-  --color-mint: #a8d5ba;
-  --color-teal: #3e6b5b;
-  --color-leaf: #7ea760;
-  --color-forest: #2e4f1c;
-  --color-sage: #7f8c78;
-  --color-background: var(--color-mint);
+  --color-mint: #f3eef7;
+  --color-teal: #6fb6ad;
+  --color-leaf: #6a4db6;
+  --color-forest: #24163c;
+  --color-sage: #d8cbed;
+  --color-background: #f9f5f1;
   --color-surface: color-mix(in srgb, var(--color-mint) 20%, white 80%);
-  --color-surface-alt: color-mix(in srgb, var(--color-sage) 35%, white 65%);
+  --color-surface-alt: color-mix(in srgb, var(--color-sage) 45%, white 55%);
   --color-accent: var(--color-leaf);
   --color-accent-soft: color-mix(in srgb, var(--color-leaf) 35%, white 65%);
-  --color-accent-strong: var(--color-forest);
+  --color-accent-strong: #1b0d2b;
   --color-highlight: var(--color-teal);
-  --color-text: var(--color-forest);
-  --color-text-muted: color-mix(in srgb, var(--color-forest) 70%, var(--color-sage) 30%);
+  --color-text: #221732;
+  --color-text-muted: color-mix(in srgb, var(--color-forest) 45%, var(--color-sage) 55%);
   --color-contrast: #ffffff;
 }
 
