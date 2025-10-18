@@ -11,20 +11,115 @@ body {
 }
 
 :root {
-  --color-mint: #a8d5ba;
-  --color-teal: #3e6b5b;
-  --color-leaf: #7ea760;
-  --color-forest: #2e4f1c;
-  --color-sage: #7f8c78;
-  --color-background: var(--color-mint);
-  --color-surface: color-mix(in srgb, var(--color-mint) 20%, white 80%);
-  --color-surface-alt: color-mix(in srgb, var(--color-sage) 35%, white 65%);
-  --color-accent: var(--color-leaf);
-  --color-accent-soft: color-mix(in srgb, var(--color-leaf) 35%, white 65%);
-  --color-accent-strong: var(--color-forest);
-  --color-highlight: var(--color-teal);
-  --color-text: var(--color-forest);
-  --color-text-muted: color-mix(in srgb, var(--color-forest) 70%, var(--color-sage) 30%);
+  /* Palette */
+  --sage-50: #f5f1e8;
+  --sage-100: #e9e3d4;
+  --sage-200: #d9cfba;
+  --sage-300: #c1b69f;
+  --sage-400: #a19f87;
+  --sage-500: #7f8c72;
+  --sage-600: #636f5a;
+  --sage-700: #4a5545;
+  --sage-800: #333b31;
+  --sage-900: #1f2822;
+
+  --seafoam-50: #eef5f1;
+  --seafoam-100: #d8e9e0;
+  --seafoam-200: #bddccd;
+  --seafoam-300: #9bcbb5;
+  --seafoam-400: #79b59d;
+  --seafoam-500: #5e9f88;
+  --seafoam-600: #4a7f6c;
+  --seafoam-700: #3c6557;
+  --seafoam-800: #29463d;
+  --seafoam-900: #1c2f2a;
+
+  --clay-50: #f7efe7;
+  --clay-100: #efdcc9;
+  --clay-200: #e3c4a5;
+  --clay-300: #d4a27b;
+  --clay-400: #c08157;
+  --clay-500: #a0633c;
+  --clay-600: #804d30;
+  --clay-700: #613a25;
+  --clay-800: #42281b;
+  --clay-900: #28170f;
+
+  --dusk-50: #f2f4f3;
+  --dusk-100: #e6e8e7;
+  --dusk-200: #cdd2d0;
+  --dusk-300: #aeb6b3;
+  --dusk-400: #8b9492;
+  --dusk-500: #6a7572;
+  --dusk-600: #525c59;
+  --dusk-700: #3f4745;
+  --dusk-800: #2b3130;
+  --dusk-900: #1e2322;
+
+  --fern-50: #eef6f1;
+  --fern-100: #cfe7d7;
+  --fern-200: #b0d8bf;
+  --fern-300: #8bc5a3;
+  --fern-400: #6dac89;
+  --fern-500: #4f926f;
+  --fern-600: #3f7459;
+  --fern-700: #315b46;
+  --fern-800: #214133;
+  --fern-900: #152a22;
+
+  --fog-50: #f6f7f7;
+  --fog-100: #ecefee;
+  --fog-200: #d7dddc;
+  --fog-300: #c2cbc9;
+  --fog-400: #abb6b4;
+  --fog-500: #909d9b;
+  --fog-600: #727f7d;
+  --fog-700: #576463;
+  --fog-800: #3c4746;
+  --fog-900: #242b2a;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(
+    135deg,
+    #f4eee4 0%,
+    #e2efe8 35%,
+    #d9e4dc 70%,
+    #f4eee4 100%
+  );
+  --gradient-nightfall: linear-gradient(
+    160deg,
+    #141d1b 0%,
+    #1f2f2a 45%,
+    #2c4a40 100%
+  );
+  --gradient-horizon: linear-gradient(
+    120deg,
+    #f7efe7 0%,
+    #e5f1eb 55%,
+    #d0e4da 100%
+  );
+
+  /* Shadows */
+  --shadow-glow: 0 0 0 1px rgba(94, 159, 136, 0.18),
+    0 18px 45px -20px rgba(28, 47, 42, 0.5);
+  --shadow-soft-xl: 0 35px 60px -30px rgba(31, 40, 34, 0.35);
+  --shadow-lifted: 0 20px 40px -25px rgba(31, 40, 34, 0.45);
+
+  /* Semantic tokens */
+  --color-mint: var(--seafoam-100);
+  --color-teal: var(--seafoam-500);
+  --color-leaf: var(--fern-400);
+  --color-forest: var(--sage-900);
+  --color-sage: var(--sage-200);
+  --color-background: var(--sage-50);
+  --color-surface: color-mix(in srgb, var(--seafoam-50) 60%, white 40%);
+  --color-surface-alt: color-mix(in srgb, var(--sage-100) 60%, white 40%);
+  --color-accent: var(--seafoam-500);
+  --color-accent-soft: color-mix(in srgb, var(--seafoam-300) 45%, white 55%);
+  --color-accent-strong: var(--seafoam-900);
+  --color-highlight: var(--clay-400);
+  --color-text: var(--dusk-900);
+  --color-text-muted: color-mix(in srgb, var(--dusk-600) 50%, var(--fog-400) 50%);
   --color-contrast: #ffffff;
 }
 
