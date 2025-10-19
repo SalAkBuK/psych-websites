@@ -1,0 +1,374 @@
+.heroNav {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-forest) 22%, transparent);
+  border-radius: 999px;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.heroNavInline {
+  align-items: center;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.heroNavList {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.heroNavList a {
+  color: color-mix(in srgb, var(--color-contrast) 90%, var(--color-mint) 10%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, transform 0.2s ease;
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+.heroNavList a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-accent-soft);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.heroNavList a:hover::before,
+.heroNavList a:focus::before {
+  transform: scaleX(1);
+}
+
+.heroNavList a:hover,
+.heroNavList a:focus {
+  color: var(--color-accent-soft);
+}
+
+.heroNavActiveLink {
+  color: var(--color-accent-soft) !important;
+}
+
+.heroNavActiveLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-highlight);
+  border-radius: 2px;
+  transform-origin: left;
+  animation: slideInUnderline 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.heroNavActiveLink::before {
+  display: none;
+}
+
+.heroNavCta {
+  background: transparent;
+  border: none;
+  color: color-mix(in srgb, var(--color-contrast) 90%, var(--color-mint) 10%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 1rem;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+  border-radius: 999px;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.heroNavCta:hover,
+.heroNavCta:focus {
+  color: var(--color-accent-soft);
+  background: color-mix(in srgb, var(--color-contrast) 10%, transparent);
+}
+
+.heroNavToggle {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-forest) 25%, transparent);
+  border: 2px solid color-mix(in srgb, var(--color-accent-soft) 50%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--color-contrast) 95%, var(--color-mint) 5%);
+  cursor: pointer;
+  display: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 0.75rem;
+  letter-spacing: 0.08em;
+  padding: 0.7rem 1.3rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.heroNavToggle:hover,
+.heroNavToggle:focus {
+  background: color-mix(in srgb, var(--color-forest) 45%, transparent);
+  border-color: color-mix(in srgb, var(--color-accent-soft) 85%, transparent);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.heroNavToggleIcon {
+  display: inline-flex;
+  height: 20px;
+  position: relative;
+  width: 24px;
+}
+
+.heroNavToggleIcon span,
+.heroNavToggleIcon span::before,
+.heroNavToggleIcon span::after {
+  background: currentColor;
+  border-radius: 999px;
+  display: block;
+  height: 2.5px;
+  position: absolute;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.heroNavToggleIcon span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.heroNavToggleIcon span::before {
+  content: '';
+  top: -7px;
+}
+
+.heroNavToggleIcon span::after {
+  content: '';
+  top: 7px;
+}
+
+.heroNavToggle[data-open='true'] {
+  background: color-mix(in srgb, var(--color-accent-soft) 25%, transparent);
+  border-color: var(--color-accent-soft);
+}
+
+.heroNavToggle[data-open='true'] .heroNavToggleIcon span {
+  background: transparent;
+}
+
+.heroNavToggle[data-open='true'] .heroNavToggleIcon span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.heroNavToggle[data-open='true'] .heroNavToggleIcon span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.heroNavBackdrop,
+.heroNavBackdropVisible {
+  display: none;
+}
+
+.heroNavOverlay {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .heroNav {
+    align-items: stretch;
+    border-radius: 1.25rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .heroNavInline {
+    display: none;
+  }
+
+  .heroNavToggle {
+    display: inline-flex;
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  .heroNavBackdrop,
+  .heroNavBackdropVisible {
+    background: color-mix(in srgb, var(--color-forest) 20%, rgba(0, 0, 0, 0.55));
+    border: none;
+    cursor: pointer;
+    display: block;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    transition: opacity 0.3s ease;
+    z-index: 14;
+  }
+
+  .heroNavBackdropVisible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .heroNavOverlay {
+    align-items: stretch;
+    background: linear-gradient(145deg, 
+      color-mix(in srgb, var(--color-forest) 50%, rgba(6, 26, 20, 0.95)),
+      color-mix(in srgb, var(--color-deep-forest) 60%, rgba(3, 15, 12, 0.95))
+    );
+    backdrop-filter: blur(20px);
+    border-radius: 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent-soft) 30%, transparent);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    gap: 1.5rem;
+    inset: auto 0 0;
+    left: 0;
+    margin: 0 auto;
+    max-width: min(94vw, 480px);
+    opacity: 0;
+    padding: 2rem 1.75rem 2.25rem;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.75rem);
+    transform: translateY(-16px);
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    z-index: 15;
+    flex-direction: column;
+  }
+
+  .heroNavOverlayOpen {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .heroNavOverlayList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .heroNavOverlayList a {
+    color: color-mix(in srgb, var(--color-contrast) 96%, var(--color-mint) 4%);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.85rem 1rem;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+    border-radius: 0.75rem;
+    background: transparent;
+  }
+
+  .heroNavOverlayList a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 3px;
+    background: var(--color-accent-soft);
+    border-radius: 2px;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .heroNavOverlayList a:hover,
+  .heroNavOverlayList a:focus {
+    color: var(--color-accent-soft);
+    background: color-mix(in srgb, var(--color-accent-soft) 12%, transparent);
+    padding-left: 1.25rem;
+  }
+
+  .heroNavOverlayList a:hover::before,
+  .heroNavOverlayList a:focus::before {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  .heroNavOverlayActive {
+    color: var(--color-highlight) !important;
+    background: color-mix(in srgb, var(--color-highlight) 15%, transparent) !important;
+    padding-left: 1.25rem !important;
+  }
+
+  .heroNavOverlayActive::before {
+    opacity: 1 !important;
+    transform: scaleY(1) !important;
+    background: var(--color-highlight) !important;
+  }
+
+  .heroNavOverlayCta {
+    align-items: center;
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-highlight) 85%, transparent),
+      color-mix(in srgb, var(--color-accent-soft) 75%, transparent)
+    );
+    border-radius: 999px;
+    color: var(--color-deep-forest);
+    display: inline-flex;
+    font-size: 1rem;
+    font-weight: 700;
+    gap: 0.5rem;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    padding: 1rem 1.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    margin-top: 0.5rem;
+  }
+
+  .heroNavOverlayCta:hover,
+  .heroNavOverlayCta:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(135deg, 
+      var(--color-highlight),
+      var(--color-accent-soft)
+    );
+  }
+}
+
+@keyframes slideInUnderline {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
