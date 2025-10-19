@@ -32,7 +32,7 @@ const treatments = [
   },
   {
     title: 'Depression',
-    image: '/Depression.png',
+    image: '/DEPRESSION.png',
   },
   {
     title: 'Medication Management',
