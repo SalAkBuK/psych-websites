@@ -57,16 +57,22 @@ const differentiators = [
     title: 'Personalized treatment roadmaps',
     description:
       'Each visit is collaborative and designed to honor your story, cultural identity, and immediate goals.',
+    image: '/Doc.jpeg',
+    imageAlt: 'Provider reviewing treatment notes with a patient in a welcoming office.',
   },
   {
     title: 'Holistic, whole-person focus',
     description:
       'Medication management is paired with lifestyle strategies, therapy coordination, and ongoing encouragement.',
+    image: '/AdobeStock_629850806.webp',
+    imageAlt: 'Person meditating calmly in a bright room with soft natural light.',
   },
   {
     title: 'Flexible access to care',
     description:
       'Virtual and in-person options with evening and weekend availability ensure care fits your routine.',
+    image: '/yo.png',
+    imageAlt: 'Patient smiling while using a laptop for a virtual appointment.',
   },
 ]
 
@@ -284,17 +290,26 @@ export default function Home() {
             </p>
           </div>
         </FadeInWhenVisible>
-        <div className={styles.valueGrid}>
+        <div className={styles.valueList}>
           {differentiators.map((item, index) => (
             <FadeInWhenVisible key={item.title} delay={index * 0.15} duration={0.6}>
-              <article className={styles.valueCard}>
-                <div className={styles.valueIcon}>
-                  {index === 0 && '🌱'}
-                  {index === 1 && '🧘'}
-                  {index === 2 && '⏰'}
+              <article className={styles.valueItem}>
+                <div className={styles.valueMedia}>
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    fill
+                    className={styles.valueImage}
+                    sizes="(min-width: 1024px) 320px, (min-width: 768px) 45vw, 90vw"
+                    priority={index === 0}
+                  />
+                  <div className={styles.valueMediaOverlay} aria-hidden="true" />
                 </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <div className={styles.valueContent}>
+                  <span className={styles.valueLabel}>Focus {String(index + 1).padStart(2, '0')}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
               </article>
             </FadeInWhenVisible>
           ))}
