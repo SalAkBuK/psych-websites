@@ -52,21 +52,6 @@ const treatments = [
   },
 ]
 
-const whyChooseUs = [
-  {
-    icon: '🌿',
-    title: 'Personalized, holistic care',
-  },
-  {
-    icon: '💊',
-    title: 'Therapy + medication options',
-  },
-  {
-    icon: '🤝',
-    title: 'Safe, nonjudgmental space',
-  },
-]
-
 const differentiators = [
   {
     title: 'Personalized treatment roadmaps',
@@ -244,7 +229,7 @@ export default function Home() {
         <div className={styles.decorativeShape}></div>
         <FadeInWhenVisible duration={0.8}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>✨ Our Expertise</span>
+            <span className={styles.sectionTag}>Our Expertise</span>
             <h2>Conditions We Treat with Care</h2>
             <p className={styles.sectionSubtitle}>
               Compassionate, evidence-based treatment for a range of mental health conditions.
@@ -287,30 +272,11 @@ export default function Home() {
         </StaggerChildren>
       </section>
 
-      <section className={styles.whyChooseSection}>
-        <FadeInWhenVisible duration={0.8}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>💚 Why Choose This Practice</span>
-            <h2>Care designed around you</h2>
-          </div>
-        </FadeInWhenVisible>
-        <div className={styles.whyChooseGrid}>
-          {whyChooseUs.map((item, index) => (
-            <FadeInWhenVisible key={item.title} delay={index * 0.15} duration={0.6}>
-              <article className={styles.whyChooseCard}>
-                <div className={styles.whyChooseIcon}>{item.icon}</div>
-                <h3>{item.title}</h3>
-              </article>
-            </FadeInWhenVisible>
-          ))}
-        </div>
-      </section>
-
       <section className={styles.approachSection} id="approach">
         <div className={styles.approachBackground}></div>
         <FadeInWhenVisible duration={0.8}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>💚 Our Approach</span>
+            <span className={styles.sectionTag}>Our Approach</span>
             <h2>Care that centers your lived experience</h2>
             <p>
               We take time to understand every aspect of your health, partnering with you to create a care plan that feels
