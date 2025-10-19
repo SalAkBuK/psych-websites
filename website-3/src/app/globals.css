@@ -11,20 +11,30 @@ body {
 }
 
 :root {
-  --color-mint: #f3eef7;
-  --color-teal: #6fb6ad;
-  --color-leaf: #6a4db6;
-  --color-forest: #24163c;
-  --color-sage: #d8cbed;
-  --color-background: #f9f5f1;
-  --color-surface: color-mix(in srgb, var(--color-mint) 20%, white 80%);
-  --color-surface-alt: color-mix(in srgb, var(--color-sage) 45%, white 55%);
+  /* Therapeutic Green & Beige Palette */
+  --color-mint: #e8f4f0;
+  --color-teal: #7ba896;
+  --color-leaf: #5a8573;
+  --color-forest: #3d5a4c;
+  --color-sage: #c7d8c9;
+  --color-sand: #e8dfd0;
+  --color-warm-beige: #f5efe5;
+  --color-muted-olive: #9ba88d;
+  
+  /* Background & Surface Colors */
+  --color-background: #faf8f4;
+  --color-surface: color-mix(in srgb, var(--color-warm-beige) 60%, white 40%);
+  --color-surface-alt: color-mix(in srgb, var(--color-sage) 35%, white 65%);
+  
+  /* Accent Colors */
   --color-accent: var(--color-leaf);
-  --color-accent-soft: color-mix(in srgb, var(--color-leaf) 35%, white 65%);
-  --color-accent-strong: #1b0d2b;
+  --color-accent-soft: color-mix(in srgb, var(--color-leaf) 30%, white 70%);
+  --color-accent-strong: var(--color-forest);
   --color-highlight: var(--color-teal);
-  --color-text: #221732;
-  --color-text-muted: color-mix(in srgb, var(--color-forest) 45%, var(--color-sage) 55%);
+  
+  /* Text Colors */
+  --color-text: #3a4a3e;
+  --color-text-muted: color-mix(in srgb, var(--color-forest) 50%, var(--color-sage) 50%);
   --color-contrast: #ffffff;
 }
 

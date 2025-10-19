@@ -5,6 +5,7 @@ import AnimatedContent from '@/components/AnimatedContent/AnimatedContent'
 import FadeInWhenVisible from '@/components/FadeInWhenVisible/FadeInWhenVisible'
 import TextReveal from '@/components/TextReveal/TextReveal'
 import StaggerChildren from '@/components/StaggerChildren/StaggerChildren'
+import BackgroundSlideshow from '@/components/BackgroundSlideshow/BackgroundSlideshow'
 import styles from './page.module.css'
 
 const navigationLinks = [
@@ -18,43 +19,35 @@ const navigationLinks = [
 const treatments = [
   {
     title: 'Anxiety Disorder',
-    description:
-      'Personalized strategies and medication management designed to reduce worry, panic, and stress-driven symptoms.',
+    image: '/ANXIETY.png',
   },
   {
     title: 'ADHD',
-    description:
-      'Thoughtful assessments with multimodal care plans that help improve focus, organization, and daily functioning.',
+    image: '/ADHD.png',
   },
   {
     title: 'Bipolar Disorder',
-    description:
-      'Collaborative treatment that stabilizes mood shifts and supports long-term emotional balance.',
+    image: '/BIPOLAR.png',
   },
   {
     title: 'Depression',
-    description:
-      'Evidence-based therapies and medication options to restore energy, motivation, and joy.',
+    image: '/Depression.png',
   },
   {
     title: 'Medication Management',
-    description:
-      'Comprehensive reviews to ensure each prescription is safe, effective, and aligned with your health goals.',
+    image: '/MEDICATION.png',
   },
   {
     title: 'Mood Disorder',
-    description:
-      'Holistic plans focused on regulating mood changes and improving overall quality of life.',
+    image: '/MOOD.png',
   },
   {
     title: 'OCD',
-    description:
-      'Support that decreases intrusive thoughts and repetitive behaviors through compassionate care.',
+    image: '/OCD.png',
   },
   {
     title: 'PTSD',
-    description:
-      'Trauma-informed support that nurtures resilience and helps you feel grounded and secure.',
+    image: '/PTSD.png',
   },
 ]
 
@@ -133,10 +126,17 @@ const testimonials = [
   },
 ]
 
+const heroBackgroundImages = [
+  '/yo.png',
+  '/AdobeStock_629850806.webp',
+  // Add more background images here as you upload them to the public folder
+]
+
 export default function Home() {
   return (
     <main className={styles.main}>
       <header className={styles.hero}>
+        <BackgroundSlideshow images={heroBackgroundImages} interval={6000} />
         <div className={styles.announcementBar}>
           <span>Serving New Jersey &amp; New York</span>
           <span className={styles.announcementSeparator} aria-hidden="true">
@@ -149,11 +149,7 @@ export default function Home() {
             <div className={styles.panelHeader}>
               <div className={styles.brandLockup}>
                 <div className={styles.brandMark} aria-hidden="true">
-                  <span />
-                </div>
-                <div className={styles.brandText}>
-                  <span className={styles.brandName}>AOK Health Solutions</span>
-                  <span className={styles.brandDescriptor}>Psychiatry</span>
+                  <img src="/aok logo 2.png" alt="AOK Health Solutions Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
               </div>
               <nav className={styles.heroNav} aria-label="Primary">
@@ -189,15 +185,6 @@ export default function Home() {
                   as="span"
                 />
               </h1>
-              <p>
-                <BlurText
-                  text="Akosua Karikari, PMHNP-BC, FNP-BC, partners with adults, adolescents, and families to deliver culturally responsive treatment plans, thoughtful medication management, and unwavering support."
-                  delay={30}
-                  animateBy="words"
-                  direction="top"
-                  as="span"
-                />
-              </p>
               <div className={styles.heroActions}>
                 <Link
                   className={styles.primaryButton}
@@ -224,10 +211,58 @@ export default function Home() {
         </div>
       </header>
 
-      <section className={styles.section} id="approach">
+      <section className={styles.section} id="treatments">
+        <div className={styles.decorativeShape}></div>
         <FadeInWhenVisible duration={0.8}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>Our Approach</span>
+            <span className={styles.sectionTag}>✨ Our Expertise</span>
+            <h2>Conditions We Treat with Care</h2>
+            <p className={styles.sectionSubtitle}>
+              Compassionate, evidence-based treatment for a range of mental health conditions.
+            </p>
+            <p className={styles.sectionDescription}>
+              Every journey is unique. We specialize in personalized care that helps you regain balance, confidence, and clarity—one step at a time.
+            </p>
+          </div>
+        </FadeInWhenVisible>
+        <StaggerChildren staggerDelay={0.1} childSelector=".treatmentCard">
+          <div className={styles.treatmentGrid}>
+            {treatments.map((treatment, index) => (
+              <FadeInWhenVisible key={treatment.title} delay={index * 0.1} duration={0.6}>
+                <article className={styles.treatmentCard}>
+                  <div className={styles.cardNumber}>{String(index + 1).padStart(2, '0')}</div>
+                  {treatment.image ? (
+                    <div className={styles.cardImagePlaceholder}>
+                      <img 
+                        src={treatment.image} 
+                        alt={treatment.title}
+                        style={{ 
+                          width: '100%', 
+                          height: '100%', 
+                          objectFit: 'cover',
+                          display: 'block',
+                          margin: 0,
+                          padding: 0,
+                          objectPosition: treatment.title === 'ADHD' ? 'center 20%' : 'center center'
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className={styles.cardImagePlaceholder}>Image Placeholder</div>
+                  )}
+                  <h3>{treatment.title}</h3>
+                </article>
+              </FadeInWhenVisible>
+            ))}
+          </div>
+        </StaggerChildren>
+      </section>
+
+      <section className={styles.approachSection} id="approach">
+        <div className={styles.approachBackground}></div>
+        <FadeInWhenVisible duration={0.8}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionTag}>💚 Our Approach</span>
             <h2>Care that centers your lived experience</h2>
             <p>
               We take time to understand every aspect of your health, partnering with you to create a care plan that feels
@@ -236,34 +271,18 @@ export default function Home() {
           </div>
         </FadeInWhenVisible>
         <div className={styles.valueGrid}>
-          {differentiators.map((item) => (
-            <article key={item.title} className={styles.valueCard}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.section} id="treatments">
-        <FadeInWhenVisible duration={0.8}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>Treatments</span>
-            <h2>Comprehensive support for your mental health</h2>
-            <p>
-              Explore the conditions we treat and discover how personalized care can
-              help you regain balance, confidence, and clarity.
-            </p>
-          </div>
-        </FadeInWhenVisible>
-        <div className={styles.treatmentGrid}>
-          {treatments.map((treatment) => (
-            <article key={treatment.title} className={styles.treatmentCard}>
-              <div className={styles.cardIcon}>🧠</div>
-              <h3>{treatment.title}</h3>
-              <p>{treatment.description}</p>
-              <div className={styles.cardImagePlaceholder}>Image Placeholder</div>
-            </article>
+          {differentiators.map((item, index) => (
+            <FadeInWhenVisible key={item.title} delay={index * 0.15} duration={0.6}>
+              <article className={styles.valueCard}>
+                <div className={styles.valueIcon}>
+                  {index === 0 && '🌱'}
+                  {index === 1 && '🧘'}
+                  {index === 2 && '⏰'}
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            </FadeInWhenVisible>
           ))}
         </div>
       </section>
@@ -452,7 +471,18 @@ export default function Home() {
             <p>
               <strong>Locations:</strong> New Jersey &amp; New York
             </p>
-            <div className={styles.contactImage}>Map Placeholder</div>
+            <div className={styles.contactImage}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d377.27765859156414!2d-74.22649050461714!3d40.93189809843089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c30273d1c43f37%3A0x5d109c5cc40e2476!2s586%20Valley%20Rd%2C%20Wayne%2C%20NJ%2007470%2C%20USA!5e0!3m2!1sen!2s!4v1729361234567!5m2!1sen!2s"
+                width="100%"
+                height="300"
+                style={{ border: 0, borderRadius: '0.75rem' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Office Location - 586 Valley Rd, Wayne, NJ 07470"
+              ></iframe>
+            </div>
           </div>
           <div className={styles.contactCard}>
             <h3>Office Hours</h3>
