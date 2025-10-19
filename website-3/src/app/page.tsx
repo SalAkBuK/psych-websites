@@ -244,7 +244,7 @@ export default function Home() {
         <div className={styles.decorativeShape}></div>
         <FadeInWhenVisible duration={0.8}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>✨ Our Expertise</span>
+            <span className={styles.sectionTag}>Our Expertise</span>
             <h2>Conditions We Treat with Care</h2>
             <p className={styles.sectionSubtitle}>
               Compassionate, evidence-based treatment for a range of mental health conditions.
@@ -290,7 +290,7 @@ export default function Home() {
       <section className={styles.whyChooseSection}>
         <FadeInWhenVisible duration={0.8}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>💚 Why Choose This Practice</span>
+            <span className={styles.sectionTag}>Why Choose This Practice</span>
             <h2>Care designed around you</h2>
           </div>
         </FadeInWhenVisible>
@@ -310,7 +310,7 @@ export default function Home() {
         <div className={styles.approachBackground}></div>
         <FadeInWhenVisible duration={0.8}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>💚 Our Approach</span>
+            <span className={styles.sectionTag}>Our Approach</span>
             <h2>Care that centers your lived experience</h2>
             <p>
               We take time to understand every aspect of your health, partnering with you to create a care plan that feels
