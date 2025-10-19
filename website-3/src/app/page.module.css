@@ -251,13 +251,13 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
   height: 2px;
   background: var(--color-accent-soft);
   border-radius: 2px;
   transform: scaleX(0);
-  transition: transform 0.3s ease;
-  transform-origin: center;
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
 }
 
 .heroNav a:hover::before,
@@ -280,11 +280,12 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
   height: 2px;
   background: var(--color-highlight);
   border-radius: 2px;
-  animation: slideInUnderline 0.3s ease;
+  transform-origin: left;
+  animation: slideInUnderline 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
 }
 
 /* Hide hover effect when link is active */
@@ -1126,8 +1127,9 @@
 }
 
 .aboutContainer {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding-inline: clamp(1.5rem, 4vw, 3rem);
 }
 
 .aboutHeader {
@@ -1150,9 +1152,10 @@
 
 .aboutGrid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
+  grid-template-columns: minmax(0, 420px) minmax(0, 620px);
+  gap: clamp(3rem, 5vw, 4rem);
   align-items: start;
+  justify-content: center;
 }
 
 .aboutImageSection {
@@ -1212,6 +1215,7 @@
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  width: min(100%, 620px);
 }
 
 .aboutIntro {
