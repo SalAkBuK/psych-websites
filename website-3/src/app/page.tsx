@@ -9,7 +9,7 @@ import FadeInWhenVisible from '@/components/FadeInWhenVisible/FadeInWhenVisible'
 import TextReveal from '@/components/TextReveal/TextReveal'
 import StaggerChildren from '@/components/StaggerChildren/StaggerChildren'
 import BackgroundSlideshow from '@/components/BackgroundSlideshow/BackgroundSlideshow'
-import HeroNavigationMenu from '@/components/HeroNavigationMenu/HeroNavigationMenu'
+import SmoothNavigation from '@/components/SmoothNavigation/SmoothNavigation'
 import styles from './page.module.css'
 
 const navigationLinks = [
@@ -59,22 +59,22 @@ const differentiators = [
   {
     title: 'Your story guides your care',
     description:
-      'Each visit is collaborative and designed to honor your story, cultural identity, and immediate goals.',
-    image: '/Doc.jpeg',
+      'We take time to truly listen. Every treatment plan is built around your unique experiences, cultural background, and personal goals—because you\'re not just a diagnosis.',
+    image: '/focus1.png',
     imageAlt: 'Provider reviewing treatment notes with a patient in a welcoming office.',
   },
   {
     title: 'Mind, body, and spirit together',
     description:
-      'Medication management is paired with lifestyle strategies, therapy coordination, and ongoing encouragement.',
-    image: '/AdobeStock_629850806.webp',
+      'Healing isn\'t just about medication. We combine clinical expertise with lifestyle support, therapy connections, and genuine encouragement to help you thrive in every way.',
+    image: '/focus2.png',
     imageAlt: 'Person meditating calmly in a bright room with soft natural light.',
   },
   {
     title: 'Care that fits your life',
     description:
-      'Virtual and in-person options with evening and weekend availability ensure care fits your routine.',
-    image: '/yo.png',
+      'Whether it\'s a virtual visit during your lunch break or an evening in-person appointment, we\'re here when you need us—no rigid schedules, just real flexibility.',
+    image: '/foucs3.png',
     imageAlt: 'Patient smiling while using a laptop for a virtual appointment.',
   },
 ]
@@ -172,12 +172,29 @@ export default function Home() {
                   <img src="/aok logo 2.png" alt="AOK Health Solutions Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
               </div>
-              <HeroNavigationMenu
-                links={navigationLinks}
-                offset={120}
-                ctaHref="tel:19734471479"
-                ctaLabel="Call (973) 447-1479"
-              />
+              <button
+                className={styles.mobileMenuButton}
+                onClick={toggleMobileMenu}
+                aria-label="Toggle menu"
+                aria-expanded={mobileMenuOpen}
+              >
+                <span className={`${styles.hamburger} ${mobileMenuOpen ? styles.hamburgerOpen : ''}`}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </button>
+              <nav className={`${styles.heroNav} ${mobileMenuOpen ? styles.heroNavOpen : ''}`} aria-label="Primary">
+                <div onClick={closeMobileMenu}>
+                  <SmoothNavigation
+                    links={navigationLinks}
+                    offset={120}
+                  />
+                </div>
+                <a className={styles.heroNavCta} href="tel:19734471479" onClick={closeMobileMenu}>
+                  Call (973) 447-1479
+                </a>
+              </nav>
             </div>
             <div className={styles.heroCopy} id="home">
               <span className={styles.heroEyebrow}>
@@ -312,6 +329,7 @@ export default function Home() {
                     className={styles.valueImage}
                     sizes="(min-width: 1024px) 320px, (min-width: 768px) 45vw, 90vw"
                     priority={index === 0}
+                    style={{ objectPosition: 'center 15%' }}
                   />
                   <div className={styles.valueMediaOverlay} aria-hidden="true" />
                 </div>
