@@ -51,6 +51,21 @@ const treatments = [
   },
 ]
 
+const whyChooseUs = [
+  {
+    icon: '🌿',
+    title: 'Personalized, holistic care',
+  },
+  {
+    icon: '💊',
+    title: 'Therapy + medication options',
+  },
+  {
+    icon: '🤝',
+    title: 'Safe, nonjudgmental space',
+  },
+]
+
 const differentiators = [
   {
     title: 'Personalized treatment roadmaps',
@@ -129,7 +144,7 @@ const testimonials = [
 const heroBackgroundImages = [
   '/yo.png',
   '/AdobeStock_629850806.webp',
-  // Add more background images here as you upload them to the public folder
+  '/HERO2.png',
 ]
 
 export default function Home() {
@@ -160,8 +175,8 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <a className={styles.heroNavCta} href="tel:19733623063">
-                  Call (973) 362-3063
+                <a className={styles.heroNavCta} href="tel:19734471479">
+                  Call (973) 447-1479
                 </a>
               </nav>
             </div>
@@ -169,7 +184,7 @@ export default function Home() {
               <span className={styles.heroEyebrow}>
                 <span className={styles.heroEyebrowAccent} aria-hidden="true" />
                 <BlurText
-                  text="Guiding You to Mental Clarity"
+                  text="Board-certified PMHNP • Holistic, evidence-based treatment • You'll be heard"
                   delay={30}
                   animateBy="words"
                   direction="top"
@@ -178,22 +193,38 @@ export default function Home() {
               </span>
               <h1>
                 <BlurText
-                  text="Personalized psychiatric care grounded in compassion"
+                  text="Compassionate psychiatric care for anxiety, depression, and more"
                   delay={50}
                   animateBy="words"
                   direction="top"
                   as="span"
                 />
               </h1>
+              
+              <div className={styles.trustBadges}>
+                <div className={styles.badge}>
+                  <span className={styles.badgeIcon}>✓</span>
+                  <span>Board-Certified PMHNP</span>
+                </div>
+                <div className={styles.badge}>
+                  <span className={styles.badgeIcon}>✓</span>
+                  <span>Verified by Psychology Today</span>
+                </div>
+                <div className={styles.badge}>
+                  <span className={styles.badgeIcon}>✓</span>
+                  <span>Licensed in NY & NJ</span>
+                </div>
+              </div>
+
               <div className={styles.heroActions}>
                 <Link
                   className={styles.primaryButton}
                   href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765"
                 >
-                  Book Online
+                  Book a Free 15-Minute Consultation
                 </Link>
-                <a className={styles.secondaryButton} href="tel:19733623063">
-                  Call (973) 362-3063
+                <a className={styles.secondaryButton} href="#treatments">
+                  Explore Services
                 </a>
               </div>
               <div className={styles.heroDetails}>
@@ -202,14 +233,33 @@ export default function Home() {
                   <p>Virtual &amp; in-person visits across NJ &amp; NY</p>
                 </div>
                 <div>
-                  <span className={styles.detailHeading}>Office Hours</span>
-                  <p>Evening &amp; weekend appointments available</p>
+                  <span className={styles.detailHeading}>Languages</span>
+                  <p>English, Twi</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </header>
+
+      <section className={styles.whyChooseSection}>
+        <FadeInWhenVisible duration={0.8}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionTag}>💚 Why Choose This Practice</span>
+            <h2>Care designed around you</h2>
+          </div>
+        </FadeInWhenVisible>
+        <div className={styles.whyChooseGrid}>
+          {whyChooseUs.map((item, index) => (
+            <FadeInWhenVisible key={item.title} delay={index * 0.15} duration={0.6}>
+              <article className={styles.whyChooseCard}>
+                <div className={styles.whyChooseIcon}>{item.icon}</div>
+                <h3>{item.title}</h3>
+              </article>
+            </FadeInWhenVisible>
+          ))}
+        </div>
+      </section>
 
       <section className={styles.section} id="treatments">
         <div className={styles.decorativeShape}></div>
@@ -308,55 +358,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.providerSection} id="provider">
-        <div className={styles.providerCard}>
-          <div className={styles.providerImage}>
-            <img
-              src="/aok.png"
-              alt="Akosua Karikari, DNP, PMHNP-BC, FNP-BC"
-              style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block', borderRadius: '12px' }}
-            />
-          </div>
-          <div className={styles.providerContent}>
-            <FadeInWhenVisible delay={0.2}>
-              <span className={styles.sectionTag}>Provider</span>
-            </FadeInWhenVisible>
-            <FadeInWhenVisible delay={0.3}>
-              <h2>Akosua Karikari, DNP, PMHNP-BC, FNP-BC</h2>
-            </FadeInWhenVisible>
-            <FadeInWhenVisible delay={0.4}>
-              <p>
-                Akosua Karikari is a board-certified psychiatric and family nurse
-                practitioner with a passion for guiding patients toward lasting
-                wellness. Her approach integrates evidence-based medicine with
-                heartfelt listening so every person feels seen, respected, and
-                empowered.
-              </p>
-            </FadeInWhenVisible>
-            <StaggerChildren staggerDelay={0.15}>
-              <ul className={styles.credentialList}>
-                <li>Psychiatric Mental Health Nurse Practitioner</li>
-                <li>Family Nurse Practitioner</li>
-                <li>Adult Gerontology Nurse Practitioner</li>
-                <li>Family Emergency Nurse Practitioner</li>
-              </ul>
-            </StaggerChildren>
-            <FadeInWhenVisible delay={0.8} direction="up">
-              <div className={styles.providerLinks}>
-                <Link
-                  href="https://www.psychologytoday.com/us/psychiatrists/akosua-karikari-paterson-nj/1442710"
-                >
-                  View Psychology Today Profile
-                </Link>
-                <Link href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765">
-                  Book with Tebra
-                </Link>
-              </div>
-            </FadeInWhenVisible>
-          </div>
-        </div>
-      </section>
-
       <section className={styles.ctaBanner} aria-label="Schedule a consultation">
         <FadeInWhenVisible duration={0.8} delay={0.1}>
           <div>
@@ -416,34 +417,102 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.aboutSection} id="about">
-        <div className={styles.aboutContent}>
-          <FadeInWhenVisible direction="right" duration={0.8}>
-            <div>
-              <span className={styles.sectionTag}>About Us</span>
-              <h2>Your trusted partner in mental wellness</h2>
-              <p>
-                AOK Health Solutions delivers integrative psychiatric care with an
-                emphasis on accessibility and empathy. We are committed to building
-                long-term relationships with our patients and collaborating with
-                families, therapists, and primary care providers to deliver
-                outstanding outcomes.
+      <section className={styles.aboutSection} id="provider">
+        <div className={styles.aboutContainer}>
+          <FadeInWhenVisible duration={0.8}>
+            <div className={styles.aboutHeader}>
+              <span className={styles.sectionTag}>Meet Your Provider</span>
+              <h2>Akosua Karikari, PMHNP-C</h2>
+              <p className={styles.aboutSubtitle}>
+                Board-Certified Psychiatric Mental Health Nurse Practitioner
               </p>
-              <StaggerChildren staggerDelay={0.15}>
-                <ul className={styles.highlightList}>
-                  <li>Personalized treatment plans tailored to your goals</li>
-                  <li>Convenient telehealth and in-person appointments</li>
-                  <li>Evidence-based care informed by advanced nursing expertise</li>
-                </ul>
-              </StaggerChildren>
             </div>
           </FadeInWhenVisible>
-          <FadeInWhenVisible direction="left" duration={0.8} delay={0.2}>
-            <div className={styles.aboutVisual}>
-              <div className={styles.imagePlaceholder}>Team Image Placeholder</div>
-              <div className={styles.placeholderCaption}>Showcase a caring team moment or calming office space</div>
-            </div>
-          </FadeInWhenVisible>
+
+          <div className={styles.aboutGrid}>
+            <FadeInWhenVisible direction="left" duration={0.8} delay={0.2}>
+              <div className={styles.aboutImageSection}>
+                <div className={styles.providerImageWrapper}>
+                  <img 
+                    src="/aok2.jpg" 
+                    alt="Akosua Karikari, PMHNP-C" 
+                    style={{ 
+                      width: '100%', 
+                      height: '100%', 
+                      objectFit: 'cover',
+                      display: 'block',
+                      borderRadius: '1.5rem'
+                    }}
+                  />
+                </div>
+                <div className={styles.credentialsBadges}>
+                  <div className={styles.credBadge}>
+                    <div>
+                      <strong>Education</strong>
+                      <p>Post-Master's Certificate, 2024</p>
+                    </div>
+                  </div>
+                  <div className={styles.credBadge}>
+                    <div>
+                      <strong>Verified</strong>
+                      <p>Psychology Today</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeInWhenVisible>
+
+            <FadeInWhenVisible direction="right" duration={0.8} delay={0.3}>
+              <div className={styles.aboutTextSection}>
+                <div className={styles.aboutIntro}>
+                  <p className={styles.leadText}>
+                    "I provide compassionate, personalized psychiatric care in a safe, nonjudgmental space. My holistic approach recognizes the connection between mental and physical health."
+                  </p>
+                </div>
+
+                <div className={styles.credentialsGrid}>
+                  <div className={styles.credentialItem}>
+                    <h4>Board Certification</h4>
+                    <p>Psychiatric Mental Health Nurse Practitioner (PMHNP-C)</p>
+                  </div>
+                  <div className={styles.credentialItem}>
+                    <h4>Licenses</h4>
+                    <p>NY: F406380-01 (2024)<br />NJ: 26NJ00576200 (2024)</p>
+                  </div>
+                  <div className={styles.credentialItem}>
+                    <h4>Treatment Modalities</h4>
+                    <p>Cognitive Behavioral Therapy (CBT), Motivational Interviewing, Medication Management</p>
+                  </div>
+                  <div className={styles.credentialItem}>
+                    <h4>Communities Served</h4>
+                    <p>LGBTQ+, BIPOC, First Responders, HIV/AIDS, Sex Workers, Racial Justice Allies</p>
+                  </div>
+                  <div className={styles.credentialItem}>
+                    <h4>Ages Served</h4>
+                    <p>Children (6–10), Preteens, Teens, Adults, Elders (65+)</p>
+                  </div>
+                  <div className={styles.credentialItem}>
+                    <h4>Languages</h4>
+                    <p>English, Twi</p>
+                  </div>
+                </div>
+
+                <div className={styles.philosophyBox}>
+                  <h3>My Philosophy</h3>
+                  <p>
+                    Your care is collaborative and evidence-based. Together we'll identify patterns, build coping skills, and create a plan that blends CBT, medication management, and holistic strategies—so you can feel balanced, resilient, and well.
+                  </p>
+                </div>
+
+                <Link
+                  className={styles.primaryButton}
+                  href="https://www.tebra.com/care/provider/akosua-karikari-np-1447632765"
+                >
+                  Book Your Free Consultation
+                </Link>
+              </div>
+            </FadeInWhenVisible>
+          </div>
         </div>
       </section>
 
@@ -462,7 +531,7 @@ export default function Home() {
           <div className={styles.contactCard}>
             <h3>Contact Details</h3>
             <p>
-              <strong>Phone:</strong> <a href="tel:19733623063">(973) 362-3063</a>
+              <strong>Phone:</strong> <a href="tel:19734471479">(973) 447-1479</a>
             </p>
             <p>
               <strong>Email:</strong>{' '}

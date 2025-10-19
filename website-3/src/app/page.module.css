@@ -312,6 +312,41 @@
   line-height: 1.7;
 }
 
+.trustBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-forest);
+  box-shadow: 0 4px 12px rgba(90, 133, 115, 0.15);
+  border: 1px solid rgba(90, 133, 115, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(90, 133, 115, 0.25);
+}
+
+.badgeIcon {
+  font-weight: 800;
+  color: var(--color-teal);
+  font-size: 1.1rem;
+}
+
 .heroActions {
   align-items: center;
   display: flex;
@@ -447,6 +482,8 @@
   flex-direction: column;
   gap: 2.5rem;
   padding: 0 clamp(1.5rem, 4vw, 6rem);
+  position: relative;
+  overflow: hidden;
 }
 
 .valueGrid {
@@ -521,6 +558,75 @@
   padding: 5rem 2rem;
   position: relative;
   overflow: hidden;
+}
+
+.whyChooseSection {
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-mint) 50%, var(--color-background) 100%);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.whyChooseGrid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.whyChooseCard {
+  background: white;
+  border-radius: 2rem;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(90, 133, 115, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.whyChooseCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-teal), var(--color-leaf), var(--color-sage));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.whyChooseCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(90, 133, 115, 0.2);
+  border-color: var(--color-sage);
+}
+
+.whyChooseCard:hover::before {
+  opacity: 1;
+}
+
+.whyChooseIcon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 8px rgba(90, 133, 115, 0.15));
+}
+
+.whyChooseCard h3 {
+  color: var(--color-forest);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.whyChooseCard p {
+  color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .approachBackground {
@@ -928,12 +1034,162 @@
 }
 
 .aboutSection {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--color-mint) 32%, transparent) 0%,
-    transparent 100%
-  );
-  padding: 4rem clamp(1.5rem, 4vw, 6rem);
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-warm-beige) 50%, var(--color-background) 100%);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.aboutHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.aboutSubtitle {
+  font-size: 1.25rem;
+  color: var(--color-teal);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.aboutImageSection {
+  position: sticky;
+  top: 2rem;
+}
+
+.providerImageWrapper {
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(90, 133, 115, 0.2);
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--color-mint), var(--color-sage));
+  padding: 1rem;
+}
+
+.providerImageWrapper .imagePlaceholder {
+  aspect-ratio: 3/4;
+  border-radius: 1.5rem;
+}
+
+.credentialsBadges {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.credBadge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(90, 133, 115, 0.1);
+}
+
+.credIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.credBadge strong {
+  display: block;
+  color: var(--color-forest);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.credBadge p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.aboutTextSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.aboutIntro {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  border-left: 5px solid var(--color-teal);
+  box-shadow: 0 10px 40px rgba(90, 133, 115, 0.12);
+}
+
+.leadText {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-forest);
+  font-style: italic;
+  margin: 0;
+}
+
+.credentialsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.credentialItem {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 6px 25px rgba(90, 133, 115, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.credentialItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 35px rgba(90, 133, 115, 0.15);
+}
+
+.credentialItem h4 {
+  color: var(--color-forest);
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.credentialItem p {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.philosophyBox {
+  background: linear-gradient(135deg, var(--color-leaf), var(--color-teal));
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  color: white;
+  box-shadow: 0 15px 50px rgba(90, 133, 115, 0.25);
+}
+
+.philosophyBox h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.philosophyBox p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .aboutContent {
@@ -1164,6 +1420,20 @@
 
   .heroDetails {
     gap: 1.5rem;
+  }
+
+  .aboutGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .aboutImageSection {
+    position: relative;
+    top: 0;
+  }
+
+  .credentialsGrid {
+    grid-template-columns: 1fr;
   }
 }
 
