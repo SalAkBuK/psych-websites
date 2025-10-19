@@ -822,7 +822,7 @@
 .treatmentGrid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   position: relative;
   z-index: 2;
 }
@@ -1645,7 +1645,12 @@
   }
 
   .treatmentCard {
-    min-height: unset;
+    min-height: 320px;
+  }
+
+  .treatmentGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .cardImagePlaceholder {
@@ -1755,12 +1760,46 @@
     width: 100%;
   }
 
+  /* Force 2 columns for treatment cards on mobile */
+  .treatmentGrid {
+    gap: 0.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    padding: 0;
+  }
+
   .treatmentCard {
-    padding: 1.5rem;
+    padding: 0.75rem;
+    min-height: 260px;
+    gap: 0.4rem;
   }
 
   .cardImagePlaceholder {
-    min-height: 200px;
+    min-height: 120px;
+    height: 120px;
+    margin-bottom: 0.4rem;
+  }
+
+  .treatmentCard h3 {
+    font-size: 0.85rem;
+    min-height: auto;
+    line-height: 1.25;
+  }
+
+  .treatmentCard p {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .cardNumber {
+    font-size: 1.75rem;
+    top: 0.4rem;
+    right: 0.4rem;
+  }
+
+  .cardIcon {
+    height: 32px;
+    width: 32px;
+    font-size: 1rem;
   }
 
   .sectionHeader h2 {
@@ -1831,5 +1870,30 @@
     flex-wrap: wrap;
     gap: 0.85rem;
     justify-content: center;
+  }
+}
+
+/* Extra small mobile devices - single column */
+@media (max-width: 400px) {
+  .treatmentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .treatmentCard {
+    padding: 1.25rem;
+    min-height: 300px;
+  }
+
+  .cardImagePlaceholder {
+    min-height: 160px;
+    height: 160px;
+  }
+
+  .treatmentCard h3 {
+    font-size: 1rem;
+  }
+
+  .treatmentCard p {
+    font-size: 0.9rem;
   }
 }
