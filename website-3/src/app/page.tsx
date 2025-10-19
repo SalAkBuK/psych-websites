@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import BlurText from '@/components/BlurText/BlurText'
@@ -32,7 +35,7 @@ const treatments = [
   },
   {
     title: 'Depression',
-    image: '/Depression.png',
+    image: '/DEPRESSION.png',
   },
   {
     title: 'Medication Management',
@@ -54,21 +57,21 @@ const treatments = [
 
 const differentiators = [
   {
-    title: 'Personalized treatment roadmaps',
+    title: 'Your story guides your care',
     description:
       'Each visit is collaborative and designed to honor your story, cultural identity, and immediate goals.',
     image: '/Doc.jpeg',
     imageAlt: 'Provider reviewing treatment notes with a patient in a welcoming office.',
   },
   {
-    title: 'Holistic, whole-person focus',
+    title: 'Mind, body, and spirit together',
     description:
       'Medication management is paired with lifestyle strategies, therapy coordination, and ongoing encouragement.',
     image: '/AdobeStock_629850806.webp',
     imageAlt: 'Person meditating calmly in a bright room with soft natural light.',
   },
   {
-    title: 'Flexible access to care',
+    title: 'Care that fits your life',
     description:
       'Virtual and in-person options with evening and weekend availability ensure care fits your routine.',
     image: '/yo.png',
@@ -140,6 +143,16 @@ const heroBackgroundImages = [
 ]
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+  }
+
   return (
     <main className={styles.main}>
       <header className={styles.hero}>
