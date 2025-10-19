@@ -749,15 +749,29 @@
 }
 
 .sectionTag {
+  align-items: center;
   background: linear-gradient(135deg, var(--color-teal), var(--color-leaf));
   border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(90, 133, 115, 0.25);
   color: white;
-  font-weight: 700;
+  display: inline-flex;
   font-size: 0.85rem;
+  font-weight: 700;
+  gap: 0.65rem;
   letter-spacing: 0.12em;
   padding: 0.5rem 1.25rem;
   text-transform: uppercase;
-  box-shadow: 0 4px 12px rgba(90, 133, 115, 0.25);
+}
+
+.sectionTag::before {
+  background: color-mix(in srgb, var(--color-contrast) 75%, transparent);
+  border-radius: 999px;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-contrast) 28%, transparent);
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  height: 0.5rem;
+  width: 0.5rem;
 }
 
 .treatmentGrid {
