@@ -52,21 +52,6 @@ const treatments = [
   },
 ]
 
-const whyChooseUs = [
-  {
-    icon: '🌿',
-    title: 'Personalized, holistic care',
-  },
-  {
-    icon: '💊',
-    title: 'Therapy + medication options',
-  },
-  {
-    icon: '🤝',
-    title: 'Safe, nonjudgmental space',
-  },
-]
-
 const differentiators = [
   {
     title: 'Personalized treatment roadmaps',
@@ -285,25 +270,6 @@ export default function Home() {
             ))}
           </div>
         </StaggerChildren>
-      </section>
-
-      <section className={styles.whyChooseSection}>
-        <FadeInWhenVisible duration={0.8}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>Why Choose This Practice</span>
-            <h2>Care designed around you</h2>
-          </div>
-        </FadeInWhenVisible>
-        <div className={styles.whyChooseGrid}>
-          {whyChooseUs.map((item, index) => (
-            <FadeInWhenVisible key={item.title} delay={index * 0.15} duration={0.6}>
-              <article className={styles.whyChooseCard}>
-                <div className={styles.whyChooseIcon}>{item.icon}</div>
-                <h3>{item.title}</h3>
-              </article>
-            </FadeInWhenVisible>
-          ))}
-        </div>
       </section>
 
       <section className={styles.approachSection} id="approach">

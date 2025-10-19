@@ -632,75 +632,6 @@
   overflow: hidden;
 }
 
-.whyChooseSection {
-  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-mint) 50%, var(--color-background) 100%);
-  padding: 5rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.whyChooseGrid {
-  display: grid;
-  gap: 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.whyChooseCard {
-  background: white;
-  border-radius: 2rem;
-  padding: 3rem 2.5rem;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(90, 133, 115, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.whyChooseCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--color-teal), var(--color-leaf), var(--color-sage));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.whyChooseCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(90, 133, 115, 0.2);
-  border-color: var(--color-sage);
-}
-
-.whyChooseCard:hover::before {
-  opacity: 1;
-}
-
-.whyChooseIcon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 4px 8px rgba(90, 133, 115, 0.15));
-}
-
-.whyChooseCard h3 {
-  color: var(--color-forest);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-
-.whyChooseCard p {
-  color: var(--color-text);
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
 .approachBackground {
   position: absolute;
   bottom: -150px;
@@ -1593,16 +1524,11 @@
     justify-content: center;
   }
 
-  .whyChooseCard,
   .valueCard,
   .testimonialCard,
   .aboutIntro,
   .philosophyBox {
     padding: clamp(1.75rem, 6vw, 2.25rem);
-  }
-
-  .whyChooseIcon {
-    font-size: 3rem;
   }
 
   .valueIcon {
@@ -1744,7 +1670,6 @@
   .providerCard,
   .contactCard,
   .contactForm,
-  .whyChooseCard,
   .valueCard,
   .testimonialCard {
     padding: 1.5rem;
