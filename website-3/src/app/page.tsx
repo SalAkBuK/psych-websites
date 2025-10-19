@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import BlurText from '@/components/BlurText/BlurText'
@@ -140,6 +143,16 @@ const heroBackgroundImages = [
 ]
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+  }
+
   return (
     <main className={styles.main}>
       <header className={styles.hero}>
@@ -159,12 +172,26 @@ export default function Home() {
                   <img src="/aok logo 2.png" alt="AOK Health Solutions Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
               </div>
-              <nav className={styles.heroNav} aria-label="Primary">
-                <SmoothNavigation
-                  links={navigationLinks}
-                  offset={120}
-                />
-                <a className={styles.heroNavCta} href="tel:19734471479">
+              <button
+                className={styles.mobileMenuButton}
+                onClick={toggleMobileMenu}
+                aria-label="Toggle menu"
+                aria-expanded={mobileMenuOpen}
+              >
+                <span className={`${styles.hamburger} ${mobileMenuOpen ? styles.hamburgerOpen : ''}`}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </button>
+              <nav className={`${styles.heroNav} ${mobileMenuOpen ? styles.heroNavOpen : ''}`} aria-label="Primary">
+                <div onClick={closeMobileMenu}>
+                  <SmoothNavigation
+                    links={navigationLinks}
+                    offset={120}
+                  />
+                </div>
+                <a className={styles.heroNavCta} href="tel:19734471479" onClick={closeMobileMenu}>
                   Call (973) 447-1479
                 </a>
               </nav>
@@ -302,6 +329,7 @@ export default function Home() {
                     className={styles.valueImage}
                     sizes="(min-width: 1024px) 320px, (min-width: 768px) 45vw, 90vw"
                     priority={index === 0}
+                    style={{ objectPosition: 'center 15%' }}
                   />
                   <div className={styles.valueMediaOverlay} aria-hidden="true" />
                 </div>
