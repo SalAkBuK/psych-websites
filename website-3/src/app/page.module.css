@@ -216,6 +216,127 @@
   color: var(--color-accent-soft);
 }
 
+.heroNav {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-forest) 22%, transparent);
+  border-radius: 999px;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  backdrop-filter: blur(10px);
+}
+
+.heroNav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.heroNav a {
+  color: color-mix(in srgb, var(--color-contrast) 90%, var(--color-mint) 10%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, transform 0.2s ease;
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+/* Hover underline effect */
+.heroNav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-accent-soft);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.heroNav a:hover::before,
+.heroNav a:focus::before {
+  transform: scaleX(1);
+}
+
+.heroNav a:hover,
+.heroNav a:focus {
+  color: var(--color-accent-soft);
+}
+
+/* Active section indicator (overrides hover) */
+.heroNav a[aria-current="page"] {
+  color: var(--color-accent-soft);
+}
+
+.heroNav a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-highlight);
+  border-radius: 2px;
+  transform-origin: left;
+  animation: slideInUnderline 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+/* Hide hover effect when link is active */
+.heroNav a[aria-current="page"]::before {
+  display: none;
+}
+
+@keyframes slideInUnderline {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.heroNavCta {
+  background: transparent;
+  border: none;
+  color: color-mix(in srgb, var(--color-contrast) 90%, var(--color-mint) 10%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 1rem;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+}
+
+.heroNavCta:hover,
+.heroNavCta:focus {
+  color: var(--color-accent-soft);
+  text-decoration: none !important;
+}
+
+.heroNavCta:hover::after,
+.heroNavCta:focus::after,
+.heroNavCta:hover::before,
+.heroNavCta:focus::before {
+  display: none !important;
+}
+
+.heroNavCta:link,
+.heroNavCta:visited {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
 
 /* Mobile Menu Styles */
 .mobileMenuButton {
@@ -1566,6 +1687,30 @@
     align-items: stretch;
     flex-direction: column;
     gap: 1.25rem;
+  }
+
+  .heroNav {
+    align-items: stretch;
+    align-self: stretch;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .heroNav ul {
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    justify-content: center;
+  }
+
+  .heroNav a {
+    font-size: 0.85rem;
+  }
+
+  .heroNavCta {
+    align-self: stretch;
+    text-align: center;
+    width: 100%;
   }
 
   .heroCopy {
