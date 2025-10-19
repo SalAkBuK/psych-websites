@@ -240,12 +240,42 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
+  position: relative;
+  padding-bottom: 0.25rem;
 }
 
 .heroNav a:hover,
 .heroNav a:focus {
   color: var(--color-accent-soft);
+}
+
+/* Active section indicator */
+.heroNav a[aria-current="page"] {
+  color: var(--color-accent-soft);
+}
+
+.heroNav a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-highlight);
+  border-radius: 2px;
+  animation: slideInUnderline 0.3s ease;
+}
+
+@keyframes slideInUnderline {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
 }
 
 .heroNavCta {

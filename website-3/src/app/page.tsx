@@ -6,6 +6,7 @@ import FadeInWhenVisible from '@/components/FadeInWhenVisible/FadeInWhenVisible'
 import TextReveal from '@/components/TextReveal/TextReveal'
 import StaggerChildren from '@/components/StaggerChildren/StaggerChildren'
 import BackgroundSlideshow from '@/components/BackgroundSlideshow/BackgroundSlideshow'
+import SmoothNavigation from '@/components/SmoothNavigation/SmoothNavigation'
 import styles from './page.module.css'
 
 const navigationLinks = [
@@ -168,13 +169,10 @@ export default function Home() {
                 </div>
               </div>
               <nav className={styles.heroNav} aria-label="Primary">
-                <ul>
-                  {navigationLinks.map((link) => (
-                    <li key={link.href}>
-                      <a href={link.href}>{link.label}</a>
-                    </li>
-                  ))}
-                </ul>
+                <SmoothNavigation
+                  links={navigationLinks}
+                  offset={120}
+                />
                 <a className={styles.heroNavCta} href="tel:19734471479">
                   Call (973) 447-1479
                 </a>
