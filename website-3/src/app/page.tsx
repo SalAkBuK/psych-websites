@@ -6,7 +6,7 @@ import FadeInWhenVisible from '@/components/FadeInWhenVisible/FadeInWhenVisible'
 import TextReveal from '@/components/TextReveal/TextReveal'
 import StaggerChildren from '@/components/StaggerChildren/StaggerChildren'
 import BackgroundSlideshow from '@/components/BackgroundSlideshow/BackgroundSlideshow'
-import SmoothNavigation from '@/components/SmoothNavigation/SmoothNavigation'
+import HeroNavigationMenu from '@/components/HeroNavigationMenu/HeroNavigationMenu'
 import styles from './page.module.css'
 
 const navigationLinks = [
@@ -52,36 +52,27 @@ const treatments = [
   },
 ]
 
-const whyChooseUs = [
-  {
-    icon: '🌿',
-    title: 'Personalized, holistic care',
-  },
-  {
-    icon: '💊',
-    title: 'Therapy + medication options',
-  },
-  {
-    icon: '🤝',
-    title: 'Safe, nonjudgmental space',
-  },
-]
-
 const differentiators = [
   {
     title: 'Personalized treatment roadmaps',
     description:
       'Each visit is collaborative and designed to honor your story, cultural identity, and immediate goals.',
+    image: '/Doc.jpeg',
+    imageAlt: 'Provider reviewing treatment notes with a patient in a welcoming office.',
   },
   {
     title: 'Holistic, whole-person focus',
     description:
       'Medication management is paired with lifestyle strategies, therapy coordination, and ongoing encouragement.',
+    image: '/AdobeStock_629850806.webp',
+    imageAlt: 'Person meditating calmly in a bright room with soft natural light.',
   },
   {
     title: 'Flexible access to care',
     description:
       'Virtual and in-person options with evening and weekend availability ensure care fits your routine.',
+    image: '/yo.png',
+    imageAlt: 'Patient smiling while using a laptop for a virtual appointment.',
   },
 ]
 
@@ -168,15 +159,12 @@ export default function Home() {
                   <img src="/aok logo 2.png" alt="AOK Health Solutions Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
               </div>
-              <nav className={styles.heroNav} aria-label="Primary">
-                <SmoothNavigation
-                  links={navigationLinks}
-                  offset={120}
-                />
-                <a className={styles.heroNavCta} href="tel:19734471479">
-                  Call (973) 447-1479
-                </a>
-              </nav>
+              <HeroNavigationMenu
+                links={navigationLinks}
+                offset={120}
+                ctaHref="tel:19734471479"
+                ctaLabel="Call (973) 447-1479"
+              />
             </div>
             <div className={styles.heroCopy} id="home">
               <span className={styles.heroEyebrow}>
@@ -244,7 +232,7 @@ export default function Home() {
         <div className={styles.decorativeShape}></div>
         <FadeInWhenVisible duration={0.8}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>✨ Our Expertise</span>
+            <span className={styles.sectionTag}>Our Expertise</span>
             <h2>Conditions We Treat with Care</h2>
             <p className={styles.sectionSubtitle}>
               Compassionate, evidence-based treatment for a range of mental health conditions.
@@ -287,30 +275,11 @@ export default function Home() {
         </StaggerChildren>
       </section>
 
-      <section className={styles.whyChooseSection}>
-        <FadeInWhenVisible duration={0.8}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>💚 Why Choose This Practice</span>
-            <h2>Care designed around you</h2>
-          </div>
-        </FadeInWhenVisible>
-        <div className={styles.whyChooseGrid}>
-          {whyChooseUs.map((item, index) => (
-            <FadeInWhenVisible key={item.title} delay={index * 0.15} duration={0.6}>
-              <article className={styles.whyChooseCard}>
-                <div className={styles.whyChooseIcon}>{item.icon}</div>
-                <h3>{item.title}</h3>
-              </article>
-            </FadeInWhenVisible>
-          ))}
-        </div>
-      </section>
-
       <section className={styles.approachSection} id="approach">
         <div className={styles.approachBackground}></div>
         <FadeInWhenVisible duration={0.8}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTag}>💚 Our Approach</span>
+            <span className={styles.sectionTag}>Our Approach</span>
             <h2>Care that centers your lived experience</h2>
             <p>
               We take time to understand every aspect of your health, partnering with you to create a care plan that feels
@@ -318,17 +287,26 @@ export default function Home() {
             </p>
           </div>
         </FadeInWhenVisible>
-        <div className={styles.valueGrid}>
+        <div className={styles.valueList}>
           {differentiators.map((item, index) => (
             <FadeInWhenVisible key={item.title} delay={index * 0.15} duration={0.6}>
-              <article className={styles.valueCard}>
-                <div className={styles.valueIcon}>
-                  {index === 0 && '🌱'}
-                  {index === 1 && '🧘'}
-                  {index === 2 && '⏰'}
+              <article className={styles.valueItem}>
+                <div className={styles.valueMedia}>
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    fill
+                    className={styles.valueImage}
+                    sizes="(min-width: 1024px) 320px, (min-width: 768px) 45vw, 90vw"
+                    priority={index === 0}
+                  />
+                  <div className={styles.valueMediaOverlay} aria-hidden="true" />
                 </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <div className={styles.valueContent}>
+                  <span className={styles.valueLabel}>Focus {String(index + 1).padStart(2, '0')}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
               </article>
             </FadeInWhenVisible>
           ))}

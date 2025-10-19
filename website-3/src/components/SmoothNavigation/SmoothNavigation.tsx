@@ -14,6 +14,7 @@ interface SmoothNavigationProps {
   className?: string
   activeClassName?: string
   offset?: number
+  onNavigate?: () => void
 }
 
 export default function SmoothNavigation({
@@ -21,6 +22,7 @@ export default function SmoothNavigation({
   className = '',
   activeClassName = '',
   offset = 100,
+  onNavigate,
 }: SmoothNavigationProps) {
   const { scrollToSection } = useSmoothScroll({ offset })
   const activeSection = useActiveSection({
@@ -31,9 +33,13 @@ export default function SmoothNavigation({
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     scrollToSection(href)
-    
+
     // Update URL without scrolling
     window.history.pushState(null, '', href)
+
+    if (onNavigate) {
+      onNavigate()
+    }
   }
 
   return (
