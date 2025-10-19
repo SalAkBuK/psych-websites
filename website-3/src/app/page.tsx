@@ -54,23 +54,23 @@ const treatments = [
 
 const differentiators = [
   {
-    title: 'Personalized treatment roadmaps',
+    title: 'Your story guides your care',
     description:
-      'Each visit is collaborative and designed to honor your story, cultural identity, and immediate goals.',
+      'We take time to truly listen. Every treatment plan is built around your unique experiences, cultural background, and personal goals—because you\'re not just a diagnosis.',
     image: '/focus1.png',
     imageAlt: 'Provider reviewing treatment notes with a patient in a welcoming office.',
   },
   {
-    title: 'Holistic, whole-person focus',
+    title: 'Mind, body, and spirit together',
     description:
-      'Medication management is paired with lifestyle strategies, therapy coordination, and ongoing encouragement.',
+      'Healing isn\'t just about medication. We combine clinical expertise with lifestyle support, therapy connections, and genuine encouragement to help you thrive in every way.',
     image: '/focus2.png',
     imageAlt: 'Person meditating calmly in a bright room with soft natural light.',
   },
   {
-    title: 'Flexible access to care',
+    title: 'Care that fits your life',
     description:
-      'Virtual and in-person options with evening and weekend availability ensure care fits your routine.',
+      'Whether it\'s a virtual visit during your lunch break or an evening in-person appointment, we\'re here when you need us—no rigid schedules, just real flexibility.',
     image: '/foucs3.png',
     imageAlt: 'Patient smiling while using a laptop for a virtual appointment.',
   },
