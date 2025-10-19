@@ -57,21 +57,21 @@ const differentiators = [
     title: 'Personalized treatment roadmaps',
     description:
       'Each visit is collaborative and designed to honor your story, cultural identity, and immediate goals.',
-    image: '/Doc.jpeg',
+    image: '/focus1.png',
     imageAlt: 'Provider reviewing treatment notes with a patient in a welcoming office.',
   },
   {
     title: 'Holistic, whole-person focus',
     description:
       'Medication management is paired with lifestyle strategies, therapy coordination, and ongoing encouragement.',
-    image: '/AdobeStock_629850806.webp',
+    image: '/focus2.png',
     imageAlt: 'Person meditating calmly in a bright room with soft natural light.',
   },
   {
     title: 'Flexible access to care',
     description:
       'Virtual and in-person options with evening and weekend availability ensure care fits your routine.',
-    image: '/yo.png',
+    image: '/foucs3.png',
     imageAlt: 'Patient smiling while using a laptop for a virtual appointment.',
   },
 ]
